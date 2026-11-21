@@ -209,6 +209,16 @@
 
 .course-book__campus-link:hover { background: #68442f; }
 .course-paper .course-book__campus-note { margin: 12px 0; }
+.course-book__campus-note p { margin-block: 0; }
+.course-book__campus-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.course-book__campus-link--secondary { background: #f2d9af; color: #64432f; box-shadow: none; }
+.course-book__campus-link--secondary:hover { background: #eacb9c; }
+.campus-course-summary { margin-block: 16px; overflow-wrap: anywhere; }
+.campus-course-summary h2 { margin: 0; font-size: clamp(19px, 2vw, 28px); }
+.campus-course-summary p { margin-block: 4px; color: #654937; font-size: .9rem; }
+.campus-course-summary dl { display: grid; gap: 5px; margin-block: 10px; }
+.campus-course-summary dl div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; border-bottom: 1px dashed #af8864; }
+.campus-course-summary dd { margin: 0; font-weight: 650; }
 
 .course-schedule__header, .course-schedule__meta {
   display: flex;

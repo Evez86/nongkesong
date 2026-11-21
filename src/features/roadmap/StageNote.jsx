@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Pencil } from 'lucide-react';
 
-export function StageNote({ term, note, onChange, noteRef }) {
+export function StageNote({ term, note, onChange, noteRef, temporary = false }) {
   const dialogRef = useRef(null);
   const editButton = useRef(null);
   const [editing, setEditing] = useState(false);
@@ -18,7 +18,8 @@ export function StageNote({ term, note, onChange, noteRef }) {
 
   function updateNote(nextNote, announce = false) {
     const saved = onChange(nextNote);
-    setMessage(saved ? (announce ? '便签已保存。' : '') : '浏览器无法永久保存，本次改动在当前页面有效。');
+    const confirmation = temporary ? '便签已更新，仅保留在本次路线中。' : '便签已保存。';
+    setMessage(saved ? (announce ? confirmation : '') : '浏览器无法永久保存，本次改动在当前页面有效。');
   }
 
   function submit(event) {
@@ -40,7 +41,7 @@ export function StageNote({ term, note, onChange, noteRef }) {
       return { text, done };
     });
 
-    updateNote({ title, description: data.get('description').trim(), actions }, true);
+    updateNote({ ...note, title, description: data.get('description').trim(), actions }, true);
     dialogRef.current.close();
   }
 
@@ -70,6 +71,13 @@ export function StageNote({ term, note, onChange, noteRef }) {
               </li>
             ))}
           </ul>
+        )}
+        {note.sources?.length > 0 && (
+          <details className="roadmap-note__sources">
+            <summary>查看规划依据</summary>
+            <ul>{note.sources.map((source) => <li key={source}>{source}</li>)}</ul>
+            <a href="#/notebook/courses">查看学期课程簿</a>
+          </details>
         )}
       </div>
       <p className="roadmap-note__status" role="status">{message}</p>

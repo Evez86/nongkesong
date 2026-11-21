@@ -40,20 +40,27 @@ export function useCampusConnection() {
 
   useEffect(() => {
     void refresh();
-    return () => operation.current?.abort();
+    function restoreSession(event) {
+      if (event.persisted) void refresh();
+    }
+    window.addEventListener('pageshow', restoreSession);
+    return () => {
+      window.removeEventListener('pageshow', restoreSession);
+      operation.current?.abort();
+    };
   }, [refresh]);
 
   async function logout() {
     operation.current?.abort();
     const controller = new AbortController();
     operation.current = controller;
-    setState((previous) => ({ ...previous, phase: 'loggingOut', logoutError: false }));
+    setState((previous) => ({ ...previous, phase: 'loggingOut', academic: null, dataPhase: 'idle', logoutError: false }));
     try {
       await endCampusSession(controller.signal);
       if (!controller.signal.aborted) setState(disconnected);
     } catch {
       if (!controller.signal.aborted) setState((previous) => ({
-        ...previous, phase: 'connected', dataPhase: previous.dataPhase === 'loading' ? 'error' : previous.dataPhase, logoutError: true,
+        ...previous, phase: 'connected', logoutError: true,
       }));
     }
   }

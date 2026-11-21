@@ -11,7 +11,7 @@ function sourceText({ page, table, row } = {}) {
 }
 
 export function TrainingPlanSummary({ plan }) {
-  const { program_name, cohort, credit_summary, parse_status, warnings } = plan;
+  const { version, credit_summary, parse_status, warnings } = plan;
 
   return (
     <section className="training-summary" aria-label="培养方案概览">
@@ -19,8 +19,7 @@ export function TrainingPlanSummary({ plan }) {
         <span>校园培养方案</span>
         {parse_status === 'partial' && <span>部分字段待核实</span>}
       </div>
-      <h3>{program_name || '培养方案'}</h3>
-      {cohort && <p className="training-summary__cohort">{cohort} 级</p>}
+      <p className="training-summary__cohort">{version ? `方案版本 · ${version}` : '方案版本暂未同步'}</p>
       <dl>
         <div><dt>方案课程学分</dt><dd>{creditText(credit_summary.parsed_credits)}</dd></div>
         <div><dt>毕业总学分要求</dt><dd>{creditText(credit_summary.graduation_target_credits)}</dd></div>

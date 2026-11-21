@@ -53,6 +53,7 @@ export function readCampusPlan(data) {
     plan_id: id,
     program_name: cleanText(data.program_name),
     cohort: Number.isInteger(data.cohort) ? String(data.cohort) : cleanText(data.cohort),
+    version: cleanText(data.version),
     parse_status: skippedCourse ? 'partial' : data.parse_status,
     courses,
     credit_summary: {

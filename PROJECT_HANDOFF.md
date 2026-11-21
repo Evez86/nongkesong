@@ -36,7 +36,7 @@
 | M0 交互骨架 | **已实现** | 原图首页、点书进入手帐、翻页与桌面动效、五个贴纸目录、简介页和返回路径 |
 | M1 日常手帐 | **已实现** | 按日期管理待办、心情和 DDL，展示完成进度及咖啡贴纸奖励，保存到本机浏览器 |
 | M2 课程簿 | 校园入口、会话状态及课程展示**已实现**，学校授权待联调 | 首页点橘猫，开放校方认证入口。课程簿展示示例课表或授权后的培养方案与课表。 |
-| M3 成长路线 | 演示地图与编辑**已实现**，AI 接入**计划** | 八学期地标切换、每学期可编辑便签与本地保存。后续补齐 FastAPI 对接及 AI 来源提示。 |
+| M3 成长路线 | 演示地图、便签编辑、规则接口联调**已实现**，校园数据与 AI **待接入** | 八学期地标切换、示例便签本地保存，可根据自填专业、学期和兴趣生成规则版。 |
 | M4 机会与图书馆 | 交互示例**已实现**，真实资料待联调 | 分类、详情、搜索和访问入口已用示例跑通。真实等级、教师资料和资源链接待核验。 |
 | M5 联调与交付 | **计划** | 端到端验证、核对资料、打包 Demo、记录上线范围与限制 |
 
@@ -75,7 +75,7 @@ M1 已可独立演示，后端和资料成员可并行准备后续模块。已�
 | 项目 | 已有 | 待实现 |
 | --- | --- | --- |
 | 学期课程簿 | 示例学分和周课表，支持授权数据的课程清单和学期筛选 | 学校授权、真实课表／培养方案联调、成绩展示 |
-| 成长路线图 | 八学期地图、可编辑便签、行动勾选、浏览器本地保存 | 由培养方案生成路线、FastAPI 接入、真实 AI 来源标识 |
+| 成长路线图 | 八学期地图、可编辑便签、行动勾选、示例便签本地保存、规则接口联调 | 由授权的专业培养方案和已修课程生成路线、真实 AI 来源标识 |
 | 日常手帐 | 按日管理待办、心情和 DDL，任务进度、贴纸和提醒在本地运行 | 账号、跨设备同步和后台推送待后续评估 |
 | 冒险公告栏 | 独立网页，支持筛选、便签、详情与竞赛等级演示 | 待接入真实机会、学校认定目录和 FastAPI |
 | 森林图书馆 | 搜索、四类资料、筛选条件和访问说明。支持配置文件下载和平台入口。 | 接入学校开课数据、教师主页、授权的试卷文件或课程平台链接 |
@@ -93,7 +93,7 @@ M1 已可独立演示，后端和资料成员可并行准备后续模块。已�
 | 路由 | 浏览器哈希、`hashchange` 事件、`useSyncExternalStore`。 |
 | 动画 | 首页 Canvas 2D 与 `requestAnimationFrame`。书桌为 CSS 过渡和关键帧。 |
 | 素材 | 首页高清 WebP、书桌 WebP、透明贴纸 WebP、经许可分发的 WOFF2 子集。依赖中保留的 Lucide 不参与当前五张贴纸的渲染。 |
-| 后端方向 | Python FastAPI 开发版及零依赖开发服务已在团队仓库的 `backend/`。运行方式见[后端 README](backend/README.md)。校园认证接口待联调。 |
+| 后端方向 | Python FastAPI **计划**。当前目录内尚无 Python 应用、数据库迁移或后端运行命令。 |
 
 ### 4.2 本地复现
 
@@ -114,8 +114,6 @@ npm run preview
 构建产物位于 `dist/`。预览命令使用构建产物，实际地址以终端为准。当前没有独立的 `npm test` 脚本，构建检查与第 11 节的手动或浏览器验收可立即执行。环境中无 Node/npm 时，先安装符合 `engines` 的 Node.js 并重新打开终端。文中的路径都相对于项目根目录，队友的机器无需使用作者的本地绝对路径。
 
 ### 4.3 已有文件
-
-以下列出前端文件。团队的后端实现位于 [`backend/`](backend/README.md)。
 
 ```text
 .
@@ -151,7 +149,7 @@ npm run preview
 
 校园入口位于 `src/features/campus/`，包括猫咪热区、官方入口、会话状态和数据请求。`src/features/trainingPlan/` 提供课程簿培养方案数据适配和清单。个人学业数据只保留在当前页面内存，会话由项目后端管理。
 
-成长路线图位于 `src/features/roadmap/`。其中 `roadmapStages.js` 提供地标坐标、贴纸位置和演示内容，`MapRoute.jsx` 在同一坐标空间绘制路径，`StageNote.jsx` 负责便签编辑，`roadmapNotes.js` 负责本地保存。旧纸地图和地标图集位于 `src/assets/roadmap-*.webp`。
+成长路线图位于 `src/features/roadmap/`。其中 `roadmapStages.js` 提供地标坐标、贴纸位置和演示内容，`MapRoute.jsx` 在同一坐标空间绘制路径，`StageNote.jsx` 负责便签编辑，`roadmapNotes.js` 负责示例便签本地保存。`RoadmapPlanner.jsx` 收集自填资料，`growthPlanApi.js` 请求规则路线并将结果转成便签。旧纸地图和地标图集位于 `src/assets/roadmap-*.webp`。
 
 日常手帐位于 `src/features/diary/`。`DailyDiary.jsx` 管理选中日期和保存流程，`DiaryDay.jsx` 渲染当天内容，`DiaryCalendar.jsx` 渲染月历，`MoodRecord.jsx` 与 `DiaryEditor.jsx` 处理输入，`diaryData.js` 定义数据、示例、贴纸和日期规则。纸面样式与课程簿共用 `src/components/paperSpread.css`。
 
@@ -185,6 +183,7 @@ src/features/opportunities/
 src/features/library/
 src/data/fixtures/
 src/lib/api/
+backend/
 data/
 ```
 
@@ -197,7 +196,7 @@ data/
 | ID | 中文名称 | 设计中的操作与视图 | 状态 |
 | --- | --- | --- | --- |
 | `courses` | 学期课程簿 | 浏览培养方案课程与学分，查看示例周课表 | 示例与授权数据视图已实现，学校数据授权和成绩展示待接入 |
-| `roadmap` | 成长路线图 | 浏览四年八学期、查看与编辑学期目标及行动 | 演示地图、便签编辑与本地保存已实现，真实 AI 计划待接入 |
+| `roadmap` | 成长路线图 | 浏览四年八学期、生成规则计划、查看与编辑学期目标及行动 | 示例及自填规则版可用，校园数据与 AI 待接入 |
 | `daily` | 日常手帐 | 按日管理待办、心情、成就和 DDL，收集咖啡贴纸 | 独立交互页已实现 |
 | `opportunities` | 冒险公告栏 | 分类及专业筛选、便签详情、竞赛等级和来源入口 | 独立交互页已实现，当前使用示例数据 |
 | `library` | 森林图书馆 | 按课程名或别名搜索介绍、任课教师、经验与真题资源 | 独立交互页已实现，当前使用示例资料 |
@@ -226,15 +225,14 @@ data/
 | FE-02 | 视觉与前端 | 日常手帐交互和本机保存 | 已确认的月历与 DDL 静态稿 | **已实现**，待办、进度、贴纸、心情、DDL 与页面提醒 |
 | BE-01 | 后端 | FastAPI 骨架、健康检查、错误结构 | 第 8 节草案 | 依赖清单、启动文档、开发接口地址、最小响应样例 |
 | DATA-01 | 搜集与核验 | 从学校网站成批整理培养方案和课程来源 | 学校、专业、适用年级范围待确认 | 学校栏目入口、可分享样本、页码/表格位置、字段字典、疑难案例 |
-| BE-02 | 后端 | 培养方案文件解析 | BE-01、DATA-01 | **开发版已有**，详见[后端接口扩展](backend/CONTRACT_EXT.md) |
-| FE-03 | 视觉与前端 | 首页橘猫登录、课程簿数据展示及错误态 | 先用固定 fixture，随后接 BE-05 | **前端已实现**，校方授权和真实数据待联调 |
+| BE-02 | 后端 | 校园单点登录与数据读取 | BE-01、学校授权、DATA-01 | 认证回跳、会话、课表和培养方案接口及错误样例 |
+| FE-03 | 视觉与前端 | 首页橘猫登录、课程簿数据展示及错误态 | 先用固定 fixture，随后接 BE-02 | **前端已实现**，校方授权和真实数据待联调 |
 | DATA-02 | 搜集与核验 | 成长规划素材及目标例子 | DATA-01 或明确标为样例的课程数据 | 四年阶段素材、目标样例、可验证出处 |
 | BE-03 | 后端 | 计划生成与 AI 适配 | BE-01、课程结果约定、DATA-02 | 结构化路线响应、演示/真实来源区分、失败策略 |
 | FE-04 | 视觉与前端 | 成长节点与详情交互 | 先用八学期 fixture，随后接 BE-03 | 节点可展开、来源标识、加载和失败状态 |
 | DATA-03 | 搜集与核验 | 整理学校公告中的竞赛、科研与实践机会，另行补齐学习资料 | 学校公告栏目、团队可访问的资料渠道与核验规则 | 机会记录、学习资料记录、访问／分享说明、缺项清单 |
 | BE-04 | 后端 | 机会与资源读取接口 | BE-01、DATA-03 | 过滤规则、列表与详情接口、数据样例 |
 | FE-05 | 视觉与前端 | 公告栏与图书馆 | 先用 fixture，随后接 BE-04 | 筛选、详情、访问入口和空状态 |
-| BE-05 | 后端 | 校园单点登录与授权数据读取 | BE-01、学校授权 | 认证回跳、会话、课表和培养方案接口及错误样例 |
 | QA-01 | 全组 | 前端、后端、来源联合验收 | M1–M4 可验收的条目 | 测试结果、当前在线范围、待修问题 |
 
 后端与资料任务可以并行起步。前端对接前，双方先用同一个小样例核对字段。安排 M2–M4 的顺序时可依据样本和接口就绪情况调整，优先让 M1 达到可独立演示的程度。
@@ -289,6 +287,8 @@ data/
 
 当前地图以第 5 站「大三上」为初始选中项。每学期便签使用 `pine-letters.roadmap-note.v1.<term-id>` 独立保存标题、说明和带完成状态的行动项。损坏记录回退到该学期的可编辑示例。学期地标短标签用于地图导览，便签内容可独立修改。
 
+配置 `VITE_API_BASE_URL` 后，「生成我的路线」接受专业、当前学期和最多三个学习方向。成功后定位到所选学期，路线及其修改保留到网页关闭或刷新。请求失败时保留已有路线。此入口标记为「按自填资料生成 · 规则版」。
+
 **用户流程。** 展示大学四年、八个学期。点击或键盘展开任一节点，可看到该学期目标、可执行行动、关联课程或来源。可用示例计划进入，接入后可基于培养方案和已输入的兴趣方向生成计划。
 
 - 把学期编号 1–8 和展示文案分开。目标不是课程事实，其建议性说明和引用需一起保留。
@@ -316,7 +316,7 @@ data/
 
 ## 8. 前后端 API 契约草案
 
-校园会话及课程簿已按本节约定接好客户端，正式校方认证回跳及数据读取待后端实现和联调。团队仓库已有培养方案文件解析、规则驱动成长路线，以及机会和资源读取的开发版接口。运行及已有接口行为见[后端 README](backend/README.md)。
+校园会话及课程簿已按本节约定接好客户端，正式校方认证回跳及数据读取待后端实现和联调。其余路由仍为草案。
 
 ### 8.1 约定与路由
 
@@ -332,9 +332,9 @@ data/
 | GET | `/healthz` | 无 | 200，服务可用性 |
 | GET | `/api/v1/campus/login` | 顶层浏览器导航 | 跳转学校统一身份认证，后端处理回调 |
 | GET | `/api/v1/campus/session` | 站点会话 | 200，会话状态；或 401 |
-| GET | `/api/v1/campus/academic-data` | 已登录会话 | 200，授权的培养方案和课表 |
+| GET | `/api/v1/campus/academic-data` | 已登录会话 | 200，授权的学生资料、培养方案、课表和学分进度 |
 | POST | `/api/v1/campus/logout` | 已登录会话 | 204，清理本站会话 |
-| POST | `/api/v1/training-plans` | 后端样本处理，`multipart/form-data` | 现有独立解析接口，见[后端接口扩展](backend/CONTRACT_EXT.md) |
+| POST | `/api/v1/campus/growth-plans` | 已登录会话、`interests` | 200，按当前会话的授权数据生成八学期规则路线，校园后端待实现 |
 | POST | `/api/v1/growth-plans` | `plan_id`、`interests`、`mode` | 200，八学期成长路线 |
 | GET | `/api/v1/opportunities` | 可选 `category`、`status` | 200，机会列表 |
 | GET | `/api/v1/opportunities/{id}` | 稳定 ID | 200，单条机会详情 |
@@ -378,11 +378,20 @@ data/
 
 - 项目后端负责认证跳转、回调、校验认证结果并创建本站 Cookie 会话。回跳地址由后端固定配置或匹配允许列表。Cookie 会话应为 HttpOnly，生产环境使用 HTTPS。退出入口只清理本站会话，并校验同源请求。
 - `GET /api/v1/campus/session` 返回 `{"authenticated":true,"display_name":"可选的称呼"}`，未登录返回 401 或 `{"authenticated":false}`。前端使用浏览器会话，不在 `localStorage` 或 `sessionStorage` 持久化学业数据。
-- `GET /api/v1/campus/academic-data` 返回 `training_plan` 和 `timetable`，未获对应数据时返回 `null`。前端在未配置项目校园接口时可打开学校官网，但该跳转不会建立本站会话。
-- 培养方案至少提供 `plan_id`、`parse_status`（`complete` 或 `partial`）、`courses`。可选 `program_name`、`cohort`、`credit_summary`（`parsed_credits`、`graduation_target_credits`）和 `warnings`。课程字段包括 `id`、`name`、`code`、`term`、`category`、`credits` 和可用的 `source_ref`。
+- `GET /api/v1/campus/academic-data` 返回 `profile`、`credit_progress`、`training_plan`、`timetable`。未获授权或暂缺的块或字段返回 `null`，已确认的零学分传 `0`。联调假数据在会话和学业数据中都标 `source: "demo"`，正式学业数据使用 `source: "campus"`。未配置项目校园接口时，打开学校官网不会建立本站会话。
+- `profile` 包括 `program_name`（专业名称）、`cohort`（入学年份，如 `2025`）、`current_term`（1–8 的整数）。`credit_progress` 包括非负数 `earned_credits`（已确认已修学分）和 `in_progress_credits`（本学期在修学分）。已修与在修分开展示，毕业差额只使用已修学分和培养方案的毕业总学分要求。
+- 培养方案至少提供 `plan_id`、`parse_status`（`complete` 或 `partial`）、`courses`。可选 `program_name`、`cohort`、`version`（可读版本名）、`credit_summary`（`parsed_credits`、`graduation_target_credits`）和 `warnings`。课程字段包括 `id`、`name`、`code`、`term`、`category`、`credits` 和可用的 `source_ref`。
 - 课表提供 `weekdays`、`period_count`、`evening_start`、`term_label` 和 `meetings`。每项课程包括 `day`（从 0 开始）、`start`、`end`（节次从 1 开始，含末节）、`title`、可选 `room`。后端按照实际学期授权给出所需数据。
 
 ### 8.4 成长路线生成
+
+游客规则版发送 `plan_id: null`、`mode: "demo"` 和自填兴趣。专业和学期在浏览器用于当前学期便签和定位。现有 `/api/v1/growth-plans` 是面向演示的无会话接口，AI 模式当前返回 `503 AI_NOT_CONFIGURED`。
+
+校园规则版前端已按以下约定接好，校方授权与项目校园后端待接通：
+
+- 请求同一校园后端的 `POST /api/v1/campus/growth-plans`，带会话 Cookie，JSON 只提交 `{"interests":["数据分析"]}`。后端从会话识别学生，按授权读取专业、年级、培养方案和已修课程，再调用规划规则。退出或会话过期返回 401，权限不足返回 403，方案不可用返回 404。会话端点和校园规划端点应使用 `Cache-Control: no-store`。
+- 响应沿用下方八学期 `terms` 结构，`source` 正式为 `"campus"`、联调为 `"demo"`，`plan_id` 与本次 `academic-data.training_plan.plan_id` 一致。目标可含 `course_ids` 和可选的 `basis` 短文本，例如已修学分和缺口的依据。前端用同一份培养方案将课程 ID 显示为课程名。
+- 前端在同步期间和校园数据不可用时显示状态。校园资料、路线和便签仅留在当前标签页内存，退出开始及重新同步时即清理。测试时用两个不同专业或已修课程的账号，核对课程簿、课表、路线依据和退出后的显示。
 
 请求示例。演示态可传 `plan_id: null`。草案中的 `mode` 只允许 `demo` 或 `ai`，真实模式需要存在可读的 `plan_id`。
 

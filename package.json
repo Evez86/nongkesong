@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:campus": "node scripts/campus-preview.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },

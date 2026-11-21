@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useSyncExternalStore } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { EntranceScene } from './components/EntranceScene.jsx';
 import { NotebookDesk } from './components/NotebookDesk.jsx';
 import { CourseBook } from './features/courses/CourseBook.jsx';
@@ -23,9 +23,28 @@ function readPage() {
 export default function App() {
   const page = useSyncExternalStore(subscribeToPageChange, readPage);
   const campus = useCampusConnection();
+  const [visitorRoadmap, setVisitorRoadmap] = useState(null);
+  const [campusRoadmap, setCampusRoadmap] = useState(null);
+  const { academic } = campus;
+  const usingVisitorData = campus.phase === 'preview' || campus.phase === 'signedOut';
+  const syncedRoadmap = campusRoadmap?.academic === academic ? campusRoadmap.value : null;
+  const roadmap = usingVisitorData ? visitorRoadmap : syncedRoadmap;
   const bookLink = useRef(null);
   const pageTitle = useRef(null);
   const previousPage = useRef(page);
+
+  useEffect(() => {
+    setCampusRoadmap((previous) => previous?.academic === academic ? previous : null);
+  }, [academic]);
+
+  function saveCampusRoadmap(next) {
+    if (!academic) return;
+    setCampusRoadmap((previous) => {
+      if (typeof next !== 'function') return { academic, value: next };
+      if (previous?.academic !== academic) return previous;
+      return { academic, value: next(previous.value) };
+    });
+  }
 
   useLayoutEffect(() => {
     const from = previousPage.current;
@@ -41,7 +60,8 @@ export default function App() {
   }, [page]);
 
   if (page === 'courses') return <CourseBook titleRef={pageTitle} campus={campus} />;
-  if (page === 'roadmap') return <GrowthRoadmap titleRef={pageTitle} />;
+  if (page === 'roadmap') return <GrowthRoadmap titleRef={pageTitle} campus={campus} usingVisitorData={usingVisitorData}
+    roadmap={roadmap} onRoadmapChange={usingVisitorData ? setVisitorRoadmap : saveCampusRoadmap} />;
   if (page === 'daily') return <DailyDiary titleRef={pageTitle} />;
   if (page === 'opportunities') return <OpportunityBoard titleRef={pageTitle} />;
   if (page === 'library') return <LibraryPage titleRef={pageTitle} />;

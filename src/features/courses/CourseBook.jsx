@@ -6,6 +6,7 @@ import decorations from '../../assets/coursebook-stickers.webp';
 import { creditCategories, selectedTerm, semesters, timetable } from './courseBookSample.js';
 import { WeekTimetable } from './WeekTimetable.jsx';
 import { TrainingPlanCourses, TrainingPlanSummary } from '../trainingPlan/TrainingPlanResult.jsx';
+import { CampusSyncStatus } from '../campus/CampusSyncStatus.jsx';
 import './courseBook.css';
 
 const courseSection = sections.find(({ id }) => id === 'courses');
@@ -66,12 +67,35 @@ function DemoSchedule() {
   );
 }
 
+function CampusCourseSummary({ academic }) {
+  const { profile, credits, plan } = academic;
+  const target = plan?.credit_summary.graduation_target_credits;
+  const remaining = target != null && credits.earned !== null
+    ? Math.max(0, Number((target - credits.earned).toFixed(2))) : null;
+  const formatCredits = (value) => value === null ? '暂未同步' : `${value} 学分`;
+
+  return (
+    <>
+      <section className="campus-course-summary" aria-label="学生资料和修读进度">
+        <h2>{profile.major || '专业暂未同步'}</h2>
+        <p>{profile.cohort ? `${profile.cohort} 级` : '入学年级暂未同步'} · {profile.currentTerm ? `当前学期 ${semesters[profile.currentTerm - 1]}` : '当前学期暂未同步'}</p>
+        <dl>
+          <div><dt>已修学分</dt><dd>{formatCredits(credits.earned)}</dd></div>
+          <div><dt>本学期在修</dt><dd>{formatCredits(credits.inProgress)}</dd></div>
+          {remaining !== null && <div><dt>距毕业总学分</dt><dd>还差 {remaining} 学分</dd></div>}
+        </dl>
+        {remaining !== null && <p>各类别毕业要求以培养方案和学校记录为准。</p>}
+      </section>
+      {plan && <TrainingPlanSummary plan={plan} />}
+    </>
+  );
+}
+
 export function CourseBook({ titleRef, campus }) {
   const [view, setView] = useState('plan');
-  const { phase, dataPhase, academic, refresh } = campus;
-  const connected = phase === 'connected' || phase === 'loggingOut';
-  const checking = phase === 'checking';
-  const showSample = !connected && !checking;
+  const { phase, dataPhase, academic, refresh, session } = campus;
+  const showSample = phase === 'preview' || phase === 'signedOut';
+  const canRetry = phase === 'error' || (phase === 'connected' && dataPhase !== 'loading');
   const plan = academic?.plan;
   const campusTimetable = academic?.timetable;
   const showPlan = Boolean(plan && (view === 'plan' || !campusTimetable));
@@ -84,13 +108,17 @@ export function CourseBook({ titleRef, campus }) {
           <Sticker region={courseSection.sticker} className="course-book__title-sticker" />
           <h1 id="course-book-title" ref={titleRef} tabIndex={-1}>{courseSection.title}</h1>
           {showSample && <span className="course-book__sample">示例数据</span>}
-          {connected && <span className="course-book__sample">校园数据</span>}
+          {phase === 'connected' && <span className="course-book__sample">{session?.demo || academic?.source === 'demo' ? '校园联调 · 测试资料' : '校园数据'}</span>}
         </header>
 
         {showSample && <DemoCredits />}
-        {plan && <TrainingPlanSummary plan={plan} />}
-        {connected && dataPhase === 'ready' && !plan && (
-          <p className="course-book__campus-note">当前没有可同步的培养方案。</p>
+        {!showSample && <div className="course-book__campus-note"><CampusSyncStatus campus={campus} /></div>}
+        {academic && <CampusCourseSummary academic={academic} />}
+        {(plan || canRetry) && (
+          <div className="course-book__campus-actions">
+            {plan && <a className="course-book__campus-link" href="#/notebook/roadmap">去生成成长路线</a>}
+            {canRetry && <button type="button" className="course-book__campus-link course-book__campus-link--secondary" onClick={refresh}>重新同步</button>}
+          </div>
         )}
         <Sticker region={[88, 288, 394, 439]} source={decorations} className="course-decoration course-decoration--coffee" />
       </section>
@@ -112,19 +140,12 @@ export function CourseBook({ titleRef, campus }) {
         {showPlan && <TrainingPlanCourses key={plan.plan_id} plan={plan} />}
         {!showPlan && campusTimetable && (
           <>
-            {campusTimetable.termLabel && <h3 className="course-book__campus-note">{campusTimetable.termLabel}</h3>}
+            <h3 className="course-book__campus-note">{campusTimetable.termLabel || '本学期周课表'}</h3>
             <WeekTimetable {...campusTimetable} />
+            {!campusTimetable.meetings.length && <p className="course-book__note">当前课表没有课程记录。</p>}
           </>
         )}
-        {(checking || dataPhase === 'loading') && <p role="status">正在获取校园数据…</p>}
-        {connected && dataPhase === 'ready' && !plan && !campusTimetable && <p>当前没有可同步的课表。</p>}
-        {connected && dataPhase === 'denied' && <p role="alert">当前会话尚未获得课表和培养方案的数据权限。</p>}
-        {connected && dataPhase === 'error' && (
-          <div>
-            <p role="alert">暂时无法读取校园数据。</p>
-            <button type="button" className="course-book__campus-link" onClick={refresh}>重新同步</button>
-          </div>
-        )}
+        {academic && !plan && !campusTimetable && <p>培养方案和周课表暂未同步。</p>}
         <Sticker region={[516, 335, 491, 395]} source={decorations} className="course-decoration course-decoration--cat" />
       </section>
     </main>
