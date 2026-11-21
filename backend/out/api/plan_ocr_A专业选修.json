@@ -1,0 +1,473 @@
+{
+  "plan_id": "plan_demo_001",
+  "source": {
+    "mode": "parsed",
+    "file_name": "A专业选修.pdf",
+    "format": "pdf_vector",
+    "text_layer": false,
+    "ocr_used": true
+  },
+  "program_name": null,
+  "cohort": null,
+  "parse_status": "partial",
+  "courses": [
+    {
+      "id": "O001",
+      "code": "24311011",
+      "name": "保险学",
+      "term": 4,
+      "terms": [
+        "第4学期",
+        "4"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O002",
+      "code": "34311069",
+      "name": "管理心理学",
+      "term": 4,
+      "terms": [
+        "第4学期",
+        "4"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O003",
+      "code": "34311079",
+      "name": "战略管理",
+      "term": 4,
+      "terms": [
+        "第4学期",
+        "4"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O004",
+      "code": "23308006",
+      "name": "数据结构与算法",
+      "term": 5,
+      "terms": [
+        "第5学期",
+        "5"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O005",
+      "code": "24310916",
+      "name": "模糊数学及应用",
+      "term": 5,
+      "terms": [
+        "第5学期",
+        "5"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O006",
+      "code": "24311017",
+      "name": "公共管理学",
+      "term": 5,
+      "terms": [
+        "第5学期",
+        "5"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O007",
+      "code": "24311960",
+      "name": "人力资源管理",
+      "term": 5,
+      "terms": [
+        "第5学期",
+        "5"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.5,
+      "source_ref": null
+    },
+    {
+      "id": "O008",
+      "code": "24311982",
+      "name": "项目融资",
+      "term": 5,
+      "terms": [
+        "第5学期",
+        "5"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.0,
+      "source_ref": null
+    },
+    {
+      "id": "O009",
+      "code": "23311039",
+      "name": "大数据治理与伦理",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.0,
+      "source_ref": null
+    },
+    {
+      "id": "O010",
+      "code": "27311901",
+      "name": "创业模拟训练",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.5,
+      "source_ref": null
+    },
+    {
+      "id": "O011",
+      "code": "33311919",
+      "name": "习近平经济思想概论",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O012",
+      "code": "34308906",
+      "name": "并行计算与分布式计算",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O013",
+      "code": "34311075",
+      "name": "公司治理",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O014",
+      "code": "34311977",
+      "name": "网络经济",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O015",
+      "code": "23311008",
+      "name": "经济法",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O016",
+      "code": "23311010",
+      "name": "农业企业管理",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O017",
+      "code": "33311021",
+      "name": "商务英语",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O018",
+      "code": "34311036",
+      "name": "系统科学方法论",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O019",
+      "code": "34311073",
+      "name": "社会保障",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O020",
+      "code": "34311916",
+      "name": "管理决策：技术与应用",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.5,
+      "source_ref": null
+    },
+    {
+      "id": "O021",
+      "code": "34311968",
+      "name": "世界经济概论",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.0,
+      "source_ref": null
+    },
+    {
+      "id": "O022",
+      "code": "34311993",
+      "name": "智慧农业产业链",
+      "term": 8,
+      "terms": [
+        "第8学期",
+        "8"
+      ],
+      "category": "elective",
+      "group": "专业选修",
+      "track": null,
+      "credits": 1.5,
+      "source_ref": null
+    }
+  ],
+  "groups": [
+    {
+      "name": "专业选修",
+      "module": "课程体系",
+      "rule": "candidate_pool",
+      "credits_required": null,
+      "computed_credits": 39.0,
+      "course_count": 22,
+      "practice_credits": null
+    }
+  ],
+  "credit_summary": {
+    "parsed_credits": 0,
+    "elective_pool_credits": 39.0,
+    "practice_credits": 0,
+    "graduation_target_credits": null
+  },
+  "warnings": [
+    {
+      "code": "OCR_USED",
+      "message": "本次结果由图像识别得到，学分、学期、课程名请对照原文抽查。",
+      "user_action": "核对高亮字段；确认无误后可在前端标记为已确认。"
+    },
+    {
+      "code": "NO_TEXT_LAYER",
+      "message": "该文件没有文字层（文字已转为图形），只能靠图像识别，字段准确率低于可提取文字的文件。",
+      "user_action": "请优先上传 Word 原件（.docx / .doc）；若只能给 PDF，请用 Word「另存为 PDF」而不是「打印成图片」。"
+    },
+    {
+      "code": "REDUNDANT_COLUMN",
+      "message": "【课程性质】与【课程属性】语义重叠（专业必修/必修），后者在本导出中恒为必修/选修，建议只保留一个作为 type，另一个降级为 group"
+    }
+  ],
+  "completeness": {
+    "level": "partial",
+    "score": 60.0,
+    "checks": [
+      {
+        "key": "courses_found",
+        "ok": true,
+        "detail": "识别到 22 门课程"
+      },
+      {
+        "key": "fields_complete",
+        "ok": true,
+        "detail": "课程名 22/22；学分 22/22；修读学期 22/22；课程编号 22/22"
+      },
+      {
+        "key": "credit_target_present",
+        "ok": false,
+        "detail": "文档未声明毕业总学分"
+      },
+      {
+        "key": "credit_reconciled",
+        "ok": false,
+        "detail": "课程累加 39.00 学分（该导出未声明毕业总学分，无法核平）"
+      },
+      {
+        "key": "groups_complete",
+        "ok": true,
+        "detail": "识别到 1 个课程组"
+      }
+    ],
+    "coverage": {
+      "name": {
+        "hit": 22,
+        "total": 22
+      },
+      "credits": {
+        "hit": 22,
+        "total": 22
+      },
+      "terms": {
+        "hit": 22,
+        "total": 22
+      },
+      "code": {
+        "hit": 22,
+        "total": 22
+      }
+    },
+    "alerts": [
+      {
+        "code": "OCR_USED",
+        "severity": "medium",
+        "message": "这份文件没有文字层，当前结果由图像识别得到，学分/学期/课程名需抽查。",
+        "user_action": "建议改传 Word 原件核对；确认无误后可在前端标记为已核对。"
+      },
+      {
+        "code": "NO_TOTAL_CREDITS",
+        "severity": "medium",
+        "message": "文档没有提供毕业总学分，无法判断是否读全（可能只上传了部分文件）。",
+        "user_action": "请上传完整培养方案（含“毕业学分要求”页）或 Word 原件；若这是按课程性质拆分的单份明细，请把其余文件一并上传。"
+      }
+    ],
+    "recommended_upload": {
+      "format": "docx",
+      "label": "Word 原件（.docx）",
+      "reason": "有文字层和真实表格，字段最全，推荐首选",
+      "rank": [
+        {
+          "format": "docx",
+          "label": "Word 原件（.docx）",
+          "note": "有文字层和真实表格，字段最全，推荐首选"
+        },
+        {
+          "format": "word97",
+          "label": "Word 原件（.doc）",
+          "note": "同上；旧格式，另存为 .docx 后更稳"
+        },
+        {
+          "format": "pdf_text",
+          "label": "含文字层的 PDF",
+          "note": "有字，但表格靠坐标还原，合并单元格/跨页可能丢行"
+        },
+        {
+          "format": "pdf_vector",
+          "label": "转曲或扫描 PDF",
+          "note": "没有文字层，必须先转图识别，准确率最低"
+        },
+        {
+          "format": "image",
+          "label": "图片（截图/照片）",
+          "note": "没有版面结构，只能靠识别，不建议"
+        }
+      ]
+    }
+  }
+}

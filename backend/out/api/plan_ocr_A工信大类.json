@@ -1,0 +1,173 @@
+{
+  "plan_id": "plan_demo_001",
+  "source": {
+    "mode": "parsed",
+    "file_name": "A工信大类.pdf",
+    "format": "pdf_vector",
+    "text_layer": false,
+    "ocr_used": true
+  },
+  "program_name": null,
+  "cohort": null,
+  "parse_status": "partial",
+  "courses": [
+    {
+      "id": "O001",
+      "code": "60200006",
+      "name": "程序设计B",
+      "term": 2,
+      "terms": [
+        "第2学期",
+        "2"
+      ],
+      "category": "required",
+      "group": "工信大类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "O002",
+      "code": "60200007",
+      "name": "智慧农业导论",
+      "term": 7,
+      "terms": [
+        "第7学期",
+        "7"
+      ],
+      "category": "required",
+      "group": "工信大类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    }
+  ],
+  "groups": [
+    {
+      "name": "工信大类",
+      "module": "课程体系",
+      "rule": "all_of",
+      "credits_required": null,
+      "computed_credits": 4.0,
+      "course_count": 2,
+      "practice_credits": null
+    }
+  ],
+  "credit_summary": {
+    "parsed_credits": 4.0,
+    "elective_pool_credits": 0,
+    "practice_credits": 0,
+    "graduation_target_credits": null
+  },
+  "warnings": [
+    {
+      "code": "OCR_USED",
+      "message": "本次结果由图像识别得到，学分、学期、课程名请对照原文抽查。",
+      "user_action": "核对高亮字段；确认无误后可在前端标记为已确认。"
+    },
+    {
+      "code": "NO_TEXT_LAYER",
+      "message": "该文件没有文字层（文字已转为图形），只能靠图像识别，字段准确率低于可提取文字的文件。",
+      "user_action": "请优先上传 Word 原件（.docx / .doc）；若只能给 PDF，请用 Word「另存为 PDF」而不是「打印成图片」。"
+    },
+    {
+      "code": "REDUNDANT_COLUMN",
+      "message": "【课程性质】与【课程属性】语义重叠（专业必修/必修），后者在本导出中恒为必修/选修，建议只保留一个作为 type，另一个降级为 group"
+    }
+  ],
+  "completeness": {
+    "level": "partial",
+    "score": 60.0,
+    "checks": [
+      {
+        "key": "courses_found",
+        "ok": true,
+        "detail": "识别到 2 门课程"
+      },
+      {
+        "key": "fields_complete",
+        "ok": true,
+        "detail": "课程名 2/2；学分 2/2；修读学期 2/2；课程编号 2/2"
+      },
+      {
+        "key": "credit_target_present",
+        "ok": false,
+        "detail": "文档未声明毕业总学分"
+      },
+      {
+        "key": "credit_reconciled",
+        "ok": false,
+        "detail": "课程累加 4.00 学分（该导出未声明毕业总学分，无法核平）"
+      },
+      {
+        "key": "groups_complete",
+        "ok": true,
+        "detail": "识别到 1 个课程组"
+      }
+    ],
+    "coverage": {
+      "name": {
+        "hit": 2,
+        "total": 2
+      },
+      "credits": {
+        "hit": 2,
+        "total": 2
+      },
+      "terms": {
+        "hit": 2,
+        "total": 2
+      },
+      "code": {
+        "hit": 2,
+        "total": 2
+      }
+    },
+    "alerts": [
+      {
+        "code": "OCR_USED",
+        "severity": "medium",
+        "message": "这份文件没有文字层，当前结果由图像识别得到，学分/学期/课程名需抽查。",
+        "user_action": "建议改传 Word 原件核对；确认无误后可在前端标记为已核对。"
+      },
+      {
+        "code": "NO_TOTAL_CREDITS",
+        "severity": "medium",
+        "message": "文档没有提供毕业总学分，无法判断是否读全（可能只上传了部分文件）。",
+        "user_action": "请上传完整培养方案（含“毕业学分要求”页）或 Word 原件；若这是按课程性质拆分的单份明细，请把其余文件一并上传。"
+      }
+    ],
+    "recommended_upload": {
+      "format": "docx",
+      "label": "Word 原件（.docx）",
+      "reason": "有文字层和真实表格，字段最全，推荐首选",
+      "rank": [
+        {
+          "format": "docx",
+          "label": "Word 原件（.docx）",
+          "note": "有文字层和真实表格，字段最全，推荐首选"
+        },
+        {
+          "format": "word97",
+          "label": "Word 原件（.doc）",
+          "note": "同上；旧格式，另存为 .docx 后更稳"
+        },
+        {
+          "format": "pdf_text",
+          "label": "含文字层的 PDF",
+          "note": "有字，但表格靠坐标还原，合并单元格/跨页可能丢行"
+        },
+        {
+          "format": "pdf_vector",
+          "label": "转曲或扫描 PDF",
+          "note": "没有文字层，必须先转图识别，准确率最低"
+        },
+        {
+          "format": "image",
+          "label": "图片（截图/照片）",
+          "note": "没有版面结构，只能靠识别，不建议"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# 后端运行依赖（按 PROJECT_HANDOFF.md §4.1 的方向：Python + FastAPI）
+# 解析链路本身零依赖（纯标准库）；以下只用于 FastAPI 版入口。
+
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30,<1.0
+python-multipart>=0.0.9        # FastAPI 接收 multipart 上传
+python-docx>=1.1               # 仅 make_docx_fixture.py 生成测试样本时使用

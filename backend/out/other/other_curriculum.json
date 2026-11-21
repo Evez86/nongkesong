@@ -1,0 +1,2392 @@
+{
+  "schema_version": "0.2",
+  "meta": {
+    "source": "course_list_export",
+    "school": null,
+    "major": null,
+    "duration_years": null,
+    "total_credits": null,
+    "note": "教务系统“课程体系明细”导出，8 个分文件按课程性质拆分；无模块学分声明"
+  },
+  "modules": [
+    {
+      "id": "M1",
+      "name": "课程体系",
+      "credits_required": null,
+      "groups": [
+        {
+          "id": "M1.G1",
+          "name": "专业必修",
+          "credits_required": null,
+          "computed_credits": 40.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O001",
+                  "code": "46311014",
+                  "name": "毕业实习",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "4"
+                  },
+                  "credits": 4.0,
+                  "terms": [
+                    "第11学期"
+                  ],
+                  "term_raw": "11"
+                },
+                {
+                  "id": "O002",
+                  "code": "46311015",
+                  "name": "毕业论文",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "5"
+                  },
+                  "credits": 5.0,
+                  "terms": [
+                    "第11学期"
+                  ],
+                  "term_raw": "11"
+                },
+                {
+                  "id": "O003",
+                  "code": "23311038",
+                  "name": "大数据导论",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O004",
+                  "code": "23311941",
+                  "name": "Python程序设计",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O005",
+                  "code": "24311020",
+                  "name": "运筹学",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O006",
+                  "code": "33308950",
+                  "name": "人工智能",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O007",
+                  "code": "33311918",
+                  "name": "管理信息系统与商务智能",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "80"
+                  },
+                  "credits": 4.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O008",
+                  "code": "35308955",
+                  "name": "数据库技术应用实训",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "64"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第6学期"
+                  ],
+                  "term_raw": "6"
+                },
+                {
+                  "id": "O009",
+                  "code": "23308951",
+                  "name": "数据分析与可视化技术",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O010",
+                  "code": "33311911",
+                  "name": "大数据营销",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "64"
+                  },
+                  "credits": 2.5,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O011",
+                  "code": "33311994",
+                  "name": "智慧物流与供应链",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "64"
+                  },
+                  "credits": 2.5,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O012",
+                  "code": "35308933",
+                  "name": "机器学习与数据挖掘",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O013",
+                  "code": "35311964",
+                  "name": "涉农大数据管理与应用综合实训",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "96"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O014",
+                  "code": "36311021",
+                  "name": "企业运营与战略管理综合实训",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "专业必修",
+                  "hours": {
+                    "raw": "4"
+                  },
+                  "credits": 4.0,
+                  "terms": [
+                    "第9学期"
+                  ],
+                  "term_raw": "9"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G2",
+          "name": "专业选修",
+          "credits_required": null,
+          "computed_credits": 39.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O015",
+                  "code": "24311011",
+                  "name": "保险学",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O016",
+                  "code": "34311069",
+                  "name": "管理心理学",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O017",
+                  "code": "34311079",
+                  "name": "战略管理",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O018",
+                  "code": "23308006",
+                  "name": "数据结构与算法",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O019",
+                  "code": "24310916",
+                  "name": "模糊数学及应用",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O020",
+                  "code": "24311017",
+                  "name": "公共管理学",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O021",
+                  "code": "24311960",
+                  "name": "人力资源管理",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "24"
+                  },
+                  "credits": 1.5,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O022",
+                  "code": "24311982",
+                  "name": "项目融资",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "16"
+                  },
+                  "credits": 1.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O023",
+                  "code": "23311039",
+                  "name": "大数据治理与伦理",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "16"
+                  },
+                  "credits": 1.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O024",
+                  "code": "27311901",
+                  "name": "创业模拟训练",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "24"
+                  },
+                  "credits": 1.5,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O025",
+                  "code": "33311919",
+                  "name": "习近平经济思想概论",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O026",
+                  "code": "34308906",
+                  "name": "并行计算与分布式计算",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O027",
+                  "code": "34311075",
+                  "name": "公司治理",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修课",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O028",
+                  "code": "34311977",
+                  "name": "网络经济",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                },
+                {
+                  "id": "O029",
+                  "code": "23311008",
+                  "name": "经济法",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O030",
+                  "code": "23311010",
+                  "name": "农业企业管理",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O031",
+                  "code": "33311021",
+                  "name": "商务英语",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O032",
+                  "code": "34311036",
+                  "name": "系统科学方法论",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O033",
+                  "code": "34311073",
+                  "name": "社会保障",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O034",
+                  "code": "34311916",
+                  "name": "管理决策：技术与应用",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "24"
+                  },
+                  "credits": 1.5,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O035",
+                  "code": "34311968",
+                  "name": "世界经济概论",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "16"
+                  },
+                  "credits": 1.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                },
+                {
+                  "id": "O036",
+                  "code": "34311993",
+                  "name": "智慧农业产业链",
+                  "unit": null,
+                  "type": "elective",
+                  "type_raw": "选修",
+                  "nature_raw": "专业选修",
+                  "hours": {
+                    "raw": "24"
+                  },
+                  "credits": 1.5,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G3",
+          "name": "大类平台课程I",
+          "credits_required": null,
+          "computed_credits": 16.5,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O037",
+                  "code": "60100010",
+                  "name": "管理学原理",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "大类平台课程I",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第1学期"
+                  ],
+                  "term_raw": "1"
+                },
+                {
+                  "id": "O038",
+                  "code": "60100014",
+                  "name": "微观经济学",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "大类平台课程I",
+                  "hours": {
+                    "raw": "56"
+                  },
+                  "credits": 3.5,
+                  "terms": [
+                    "第1学期"
+                  ],
+                  "term_raw": "1"
+                },
+                {
+                  "id": "O039",
+                  "code": "60100011",
+                  "name": "宏观经济学",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "大类平台课程I",
+                  "hours": {
+                    "raw": "56"
+                  },
+                  "credits": 3.5,
+                  "terms": [
+                    "第2学期"
+                  ],
+                  "term_raw": "2"
+                },
+                {
+                  "id": "O040",
+                  "code": "60100013",
+                  "name": "社会学原理",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "大类平台课程I",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O041",
+                  "code": "60100012",
+                  "name": "社会科学研究方法",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "大类平台课程I",
+                  "hours": {
+                    "raw": "24"
+                  },
+                  "credits": 1.5,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O042",
+                  "code": "60100015",
+                  "name": "政治学",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "大类平台课程I",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G4",
+          "name": "学院平台课",
+          "credits_required": null,
+          "computed_credits": 14.5,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O043",
+                  "code": "13311010",
+                  "name": "经济管理类专业导论",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "24"
+                  },
+                  "credits": 1.5,
+                  "terms": [
+                    "第1学期"
+                  ],
+                  "term_raw": "1"
+                },
+                {
+                  "id": "O044",
+                  "code": "13311004",
+                  "name": "会计学原理",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "40"
+                  },
+                  "credits": 2.5,
+                  "terms": [
+                    "第2学期"
+                  ],
+                  "term_raw": "2"
+                },
+                {
+                  "id": "O045",
+                  "code": "16311001",
+                  "name": "中国特色社会主义伟大实践认知实习",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "1"
+                  },
+                  "credits": 1.0,
+                  "terms": [
+                    "第3学期"
+                  ],
+                  "term_raw": "3"
+                },
+                {
+                  "id": "O046",
+                  "code": "23313001",
+                  "name": "政治经济学",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                },
+                {
+                  "id": "O047",
+                  "code": "21310003",
+                  "name": "数学建模",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O048",
+                  "code": "23311001",
+                  "name": "应用统计",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第5学期"
+                  ],
+                  "term_raw": "5"
+                },
+                {
+                  "id": "O049",
+                  "code": "36311009",
+                  "name": "企业经营管理综合实训",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "学院平台课",
+                  "hours": {
+                    "raw": "2.5"
+                  },
+                  "credits": 2.5,
+                  "terms": [
+                    "第6学期"
+                  ],
+                  "term_raw": "6"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G5",
+          "name": "工信大类",
+          "credits_required": null,
+          "computed_credits": 4.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O050",
+                  "code": "60200006",
+                  "name": "程序设计B",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "工信大类",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第2学期"
+                  ],
+                  "term_raw": "2"
+                },
+                {
+                  "id": "O051",
+                  "code": "60200007",
+                  "name": "智慧农业导论",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "工信大类",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第7学期"
+                  ],
+                  "term_raw": "7"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G6",
+          "name": "理学大类",
+          "credits_required": null,
+          "computed_credits": 16.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O052",
+                  "code": "60200029",
+                  "name": "一元微积分",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "理学大类",
+                  "hours": {
+                    "raw": "80"
+                  },
+                  "credits": 5.0,
+                  "terms": [
+                    "第1学期"
+                  ],
+                  "term_raw": "1"
+                },
+                {
+                  "id": "O053",
+                  "code": "60200015",
+                  "name": "多元微积分",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "理学大类",
+                  "hours": {
+                    "raw": "80"
+                  },
+                  "credits": 5.0,
+                  "terms": [
+                    "第2学期"
+                  ],
+                  "term_raw": "2"
+                },
+                {
+                  "id": "O054",
+                  "code": "60200028",
+                  "name": "线性代数",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "理学大类",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第2学期"
+                  ],
+                  "term_raw": "2"
+                },
+                {
+                  "id": "O055",
+                  "code": "60200017",
+                  "name": "概率论与数理统计",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "理学大类",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G7",
+          "name": "生命科学大类",
+          "credits_required": null,
+          "computed_credits": 2.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O056",
+                  "code": "60200046",
+                  "name": "生命科学导论",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "生命科学大类",
+                  "hours": {
+                    "raw": "32"
+                  },
+                  "credits": 2.0,
+                  "terms": [
+                    "第4学期"
+                  ],
+                  "term_raw": "4"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "M1.G8",
+          "name": "生态大类",
+          "credits_required": null,
+          "computed_credits": 3.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "O057",
+                  "code": "60200048",
+                  "name": "空间信息技术",
+                  "unit": null,
+                  "type": "required",
+                  "type_raw": "必修",
+                  "nature_raw": "生态大类",
+                  "hours": {
+                    "raw": "48"
+                  },
+                  "credits": 3.0,
+                  "terms": [
+                    "第8学期"
+                  ],
+                  "term_raw": "8"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "computed_credits": 135.0
+    }
+  ],
+  "courses": [
+    {
+      "id": "O001",
+      "code": "46311014",
+      "name": "毕业实习",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "4"
+      },
+      "credits": 4.0,
+      "terms": [
+        "第11学期"
+      ],
+      "term_raw": "11",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O002",
+      "code": "46311015",
+      "name": "毕业论文",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "5"
+      },
+      "credits": 5.0,
+      "terms": [
+        "第11学期"
+      ],
+      "term_raw": "11",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O003",
+      "code": "23311038",
+      "name": "大数据导论",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O004",
+      "code": "23311941",
+      "name": "Python程序设计",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O005",
+      "code": "24311020",
+      "name": "运筹学",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O006",
+      "code": "33308950",
+      "name": "人工智能",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O007",
+      "code": "33311918",
+      "name": "管理信息系统与商务智能",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "80"
+      },
+      "credits": 4.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O008",
+      "code": "35308955",
+      "name": "数据库技术应用实训",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "64"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第6学期"
+      ],
+      "term_raw": "6",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O009",
+      "code": "23308951",
+      "name": "数据分析与可视化技术",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O010",
+      "code": "33311911",
+      "name": "大数据营销",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "64"
+      },
+      "credits": 2.5,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O011",
+      "code": "33311994",
+      "name": "智慧物流与供应链",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "64"
+      },
+      "credits": 2.5,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O012",
+      "code": "35308933",
+      "name": "机器学习与数据挖掘",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O013",
+      "code": "35311964",
+      "name": "涉农大数据管理与应用综合实训",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "96"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O014",
+      "code": "36311021",
+      "name": "企业运营与战略管理综合实训",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "专业必修",
+      "hours": {
+        "raw": "4"
+      },
+      "credits": 4.0,
+      "terms": [
+        "第9学期"
+      ],
+      "term_raw": "9",
+      "module": "课程体系",
+      "group": "专业必修"
+    },
+    {
+      "id": "O015",
+      "code": "24311011",
+      "name": "保险学",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O016",
+      "code": "34311069",
+      "name": "管理心理学",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O017",
+      "code": "34311079",
+      "name": "战略管理",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O018",
+      "code": "23308006",
+      "name": "数据结构与算法",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O019",
+      "code": "24310916",
+      "name": "模糊数学及应用",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O020",
+      "code": "24311017",
+      "name": "公共管理学",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O021",
+      "code": "24311960",
+      "name": "人力资源管理",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "24"
+      },
+      "credits": 1.5,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O022",
+      "code": "24311982",
+      "name": "项目融资",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "16"
+      },
+      "credits": 1.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O023",
+      "code": "23311039",
+      "name": "大数据治理与伦理",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "16"
+      },
+      "credits": 1.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O024",
+      "code": "27311901",
+      "name": "创业模拟训练",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "24"
+      },
+      "credits": 1.5,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O025",
+      "code": "33311919",
+      "name": "习近平经济思想概论",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O026",
+      "code": "34308906",
+      "name": "并行计算与分布式计算",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O027",
+      "code": "34311075",
+      "name": "公司治理",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修课",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O028",
+      "code": "34311977",
+      "name": "网络经济",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O029",
+      "code": "23311008",
+      "name": "经济法",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O030",
+      "code": "23311010",
+      "name": "农业企业管理",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O031",
+      "code": "33311021",
+      "name": "商务英语",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O032",
+      "code": "34311036",
+      "name": "系统科学方法论",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O033",
+      "code": "34311073",
+      "name": "社会保障",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O034",
+      "code": "34311916",
+      "name": "管理决策：技术与应用",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "24"
+      },
+      "credits": 1.5,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O035",
+      "code": "34311968",
+      "name": "世界经济概论",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "16"
+      },
+      "credits": 1.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O036",
+      "code": "34311993",
+      "name": "智慧农业产业链",
+      "unit": null,
+      "type": "elective",
+      "type_raw": "选修",
+      "nature_raw": "专业选修",
+      "hours": {
+        "raw": "24"
+      },
+      "credits": 1.5,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "专业选修"
+    },
+    {
+      "id": "O037",
+      "code": "60100010",
+      "name": "管理学原理",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "大类平台课程I",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第1学期"
+      ],
+      "term_raw": "1",
+      "module": "课程体系",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "O038",
+      "code": "60100014",
+      "name": "微观经济学",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "大类平台课程I",
+      "hours": {
+        "raw": "56"
+      },
+      "credits": 3.5,
+      "terms": [
+        "第1学期"
+      ],
+      "term_raw": "1",
+      "module": "课程体系",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "O039",
+      "code": "60100011",
+      "name": "宏观经济学",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "大类平台课程I",
+      "hours": {
+        "raw": "56"
+      },
+      "credits": 3.5,
+      "terms": [
+        "第2学期"
+      ],
+      "term_raw": "2",
+      "module": "课程体系",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "O040",
+      "code": "60100013",
+      "name": "社会学原理",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "大类平台课程I",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "O041",
+      "code": "60100012",
+      "name": "社会科学研究方法",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "大类平台课程I",
+      "hours": {
+        "raw": "24"
+      },
+      "credits": 1.5,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "O042",
+      "code": "60100015",
+      "name": "政治学",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "大类平台课程I",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "O043",
+      "code": "13311010",
+      "name": "经济管理类专业导论",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "24"
+      },
+      "credits": 1.5,
+      "terms": [
+        "第1学期"
+      ],
+      "term_raw": "1",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O044",
+      "code": "13311004",
+      "name": "会计学原理",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "40"
+      },
+      "credits": 2.5,
+      "terms": [
+        "第2学期"
+      ],
+      "term_raw": "2",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O045",
+      "code": "16311001",
+      "name": "中国特色社会主义伟大实践认知实习",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "1"
+      },
+      "credits": 1.0,
+      "terms": [
+        "第3学期"
+      ],
+      "term_raw": "3",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O046",
+      "code": "23313001",
+      "name": "政治经济学",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O047",
+      "code": "21310003",
+      "name": "数学建模",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O048",
+      "code": "23311001",
+      "name": "应用统计",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第5学期"
+      ],
+      "term_raw": "5",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O049",
+      "code": "36311009",
+      "name": "企业经营管理综合实训",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "学院平台课",
+      "hours": {
+        "raw": "2.5"
+      },
+      "credits": 2.5,
+      "terms": [
+        "第6学期"
+      ],
+      "term_raw": "6",
+      "module": "课程体系",
+      "group": "学院平台课"
+    },
+    {
+      "id": "O050",
+      "code": "60200006",
+      "name": "程序设计B",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "工信大类",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第2学期"
+      ],
+      "term_raw": "2",
+      "module": "课程体系",
+      "group": "工信大类"
+    },
+    {
+      "id": "O051",
+      "code": "60200007",
+      "name": "智慧农业导论",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "工信大类",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第7学期"
+      ],
+      "term_raw": "7",
+      "module": "课程体系",
+      "group": "工信大类"
+    },
+    {
+      "id": "O052",
+      "code": "60200029",
+      "name": "一元微积分",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "理学大类",
+      "hours": {
+        "raw": "80"
+      },
+      "credits": 5.0,
+      "terms": [
+        "第1学期"
+      ],
+      "term_raw": "1",
+      "module": "课程体系",
+      "group": "理学大类"
+    },
+    {
+      "id": "O053",
+      "code": "60200015",
+      "name": "多元微积分",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "理学大类",
+      "hours": {
+        "raw": "80"
+      },
+      "credits": 5.0,
+      "terms": [
+        "第2学期"
+      ],
+      "term_raw": "2",
+      "module": "课程体系",
+      "group": "理学大类"
+    },
+    {
+      "id": "O054",
+      "code": "60200028",
+      "name": "线性代数",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "理学大类",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第2学期"
+      ],
+      "term_raw": "2",
+      "module": "课程体系",
+      "group": "理学大类"
+    },
+    {
+      "id": "O055",
+      "code": "60200017",
+      "name": "概率论与数理统计",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "理学大类",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "理学大类"
+    },
+    {
+      "id": "O056",
+      "code": "60200046",
+      "name": "生命科学导论",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "生命科学大类",
+      "hours": {
+        "raw": "32"
+      },
+      "credits": 2.0,
+      "terms": [
+        "第4学期"
+      ],
+      "term_raw": "4",
+      "module": "课程体系",
+      "group": "生命科学大类"
+    },
+    {
+      "id": "O057",
+      "code": "60200048",
+      "name": "空间信息技术",
+      "unit": null,
+      "type": "required",
+      "type_raw": "必修",
+      "nature_raw": "生态大类",
+      "hours": {
+        "raw": "48"
+      },
+      "credits": 3.0,
+      "terms": [
+        "第8学期"
+      ],
+      "term_raw": "8",
+      "module": "课程体系",
+      "group": "生态大类"
+    }
+  ],
+  "student_records": [
+    {
+      "code": "23311038",
+      "name": "大数据导论",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "23311941",
+      "name": "Python程序设计",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "24311011",
+      "name": "保险学",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "34311079",
+      "name": "战略管理",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "60100010",
+      "name": "管理学原理",
+      "status": "已修通过",
+      "earned_credits": 3.0,
+      "term": "1"
+    },
+    {
+      "code": "60100014",
+      "name": "微观经济学",
+      "status": "已修通过",
+      "earned_credits": 3.5,
+      "term": "1"
+    },
+    {
+      "code": "60100011",
+      "name": "宏观经济学",
+      "status": "已修通过",
+      "earned_credits": 3.5,
+      "term": "2"
+    },
+    {
+      "code": "60100013",
+      "name": "社会学原理",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "13311010",
+      "name": "经济管理类专业导论",
+      "status": "已修通过",
+      "earned_credits": 1.5,
+      "term": "1"
+    },
+    {
+      "code": "13311004",
+      "name": "会计学原理",
+      "status": "已修通过",
+      "earned_credits": 2.5,
+      "term": "2"
+    },
+    {
+      "code": "16311001",
+      "name": "中国特色社会主义伟大实践认知实习",
+      "status": "已修通过",
+      "earned_credits": 1.0,
+      "term": "3"
+    },
+    {
+      "code": "23313001",
+      "name": "政治经济学",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "60200006",
+      "name": "程序设计B",
+      "status": "已修通过",
+      "earned_credits": 2.0,
+      "term": "2"
+    },
+    {
+      "code": "60200029",
+      "name": "一元微积分",
+      "status": "已修通过",
+      "earned_credits": 5.0,
+      "term": "1"
+    },
+    {
+      "code": "60200015",
+      "name": "多元微积分",
+      "status": "已修通过",
+      "earned_credits": 5.0,
+      "term": "2"
+    },
+    {
+      "code": "60200028",
+      "name": "线性代数",
+      "status": "已修通过",
+      "earned_credits": 3.0,
+      "term": "2"
+    },
+    {
+      "code": "60200017",
+      "name": "概率论与数理统计",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    },
+    {
+      "code": "60200046",
+      "name": "生命科学导论",
+      "status": "修读中",
+      "earned_credits": null,
+      "term": "4"
+    }
+  ],
+  "issues": [
+    {
+      "level": "info",
+      "code": "TOTAL_SUM",
+      "message": "课程累加 135.00 学分（该导出未声明毕业总学分，无法核平）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "专业必修：14 门，合计 40.00 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "专业选修：22 门，合计 39.00 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "大类平台课程I：6 门，合计 16.50 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "学院平台课：7 门，合计 14.50 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "工信大类：2 门，合计 4.00 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "理学大类：4 门，合计 16.00 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "生命科学大类：1 门，合计 2.00 学分（文档未声明组学分）"
+    },
+    {
+      "level": "info",
+      "code": "GROUP_SUM",
+      "message": "生态大类：1 门，合计 3.00 学分（文档未声明组学分）"
+    },
+    {
+      "level": "warning",
+      "code": "TERM_OUT_OF_RANGE",
+      "message": "开设学期=11 超出四年制 1-8 学期范围（毕业实习、毕业论文）——该字段可能是教务系统学期码，需确认语义"
+    },
+    {
+      "level": "warning",
+      "code": "TERM_OUT_OF_RANGE",
+      "message": "开设学期=9 超出四年制 1-8 学期范围（企业运营与战略管理综合实训）——该字段可能是教务系统学期码，需确认语义"
+    },
+    {
+      "level": "warning",
+      "code": "HOURS_SUSPECT",
+      "message": "5 门课的总学时小于 8（如 毕业实习=4、毕业论文=5、企业运营与战略管理综合实训=4），推测该列对实习/论文写的是\"周\"，口径不统一"
+    },
+    {
+      "level": "warning",
+      "code": "REDUNDANT_COLUMN",
+      "message": "【课程性质】与【课程属性】语义重叠（专业必修/必修），后者在本导出中恒为必修/选修，建议只保留一个作为 type，另一个降级为 group"
+    },
+    {
+      "level": "info",
+      "code": "NATURE_VARIANT",
+      "message": "课程性质存在变体写法：专业必修、专业选修、专业选修课、大类平台课程I、学院平台课、工信大类、理学大类、生命科学大类、生态大类（“专业选修课”应按“专业选修”归一）"
+    },
+    {
+      "level": "info",
+      "code": "MIXED_STUDENT_DATA",
+      "message": "本导出含 18 条【完成情况/已获学分】，属于学籍执行数据，已从培养方案中剥离到 student_records"
+    }
+  ]
+}

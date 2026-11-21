@@ -1,0 +1,878 @@
+{
+  "plan_id": "plan_demo_001",
+  "source": {
+    "mode": "parsed",
+    "file_name": "8-工学院理科试验班（智能装备）本科人才培养方案.doc",
+    "format": "word97",
+    "text_layer": true,
+    "ocr_used": false,
+    "files": null
+  },
+  "program_name": "工科试验班（智能装备）",
+  "cohort": null,
+  "parse_status": "complete",
+  "courses": [
+    {
+      "id": "C001",
+      "code": "12314001",
+      "name": "Academic Writing（1）",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "外语类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C002",
+      "code": "12314003",
+      "name": "Listening and Presentation（1）",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "外语类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C003",
+      "code": "12314002",
+      "name": "Academic Writing（2）",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "外语类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C004",
+      "code": "12314004",
+      "name": "Listening and Presentation（2）",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "外语类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C005",
+      "code": null,
+      "name": "画法几何与工程制图",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程I",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C006",
+      "code": null,
+      "name": "程序设计A",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程I",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C007",
+      "code": null,
+      "name": "工程思维",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "大类平台课程I",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C008",
+      "code": null,
+      "name": "电工电子技术基础",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程I",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C009",
+      "code": null,
+      "name": "一元微积分",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 5.0,
+      "source_ref": null
+    },
+    {
+      "id": "C010",
+      "code": null,
+      "name": "多元微积分",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 5.0,
+      "source_ref": null
+    },
+    {
+      "id": "C011",
+      "code": null,
+      "name": "线性代数",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C012",
+      "code": null,
+      "name": "概率论与数理统计",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C013",
+      "code": null,
+      "name": "大学物理B（上）",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 4.0,
+      "source_ref": null
+    },
+    {
+      "id": "C014",
+      "code": null,
+      "name": "大学物理B（下）",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 3.5,
+      "source_ref": null
+    },
+    {
+      "id": "C015",
+      "code": null,
+      "name": "大学物理实验B",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 1.5,
+      "source_ref": null
+    },
+    {
+      "id": "C016",
+      "code": null,
+      "name": "基础化学",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C017",
+      "code": null,
+      "name": "基础化学实验",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 1.0,
+      "source_ref": null
+    },
+    {
+      "id": "C018",
+      "code": null,
+      "name": "植物田间技术（上）",
+      "term": 5,
+      "terms": [
+        "3秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": "植物模块",
+      "credits": 1.5,
+      "source_ref": null
+    },
+    {
+      "id": "C019",
+      "code": null,
+      "name": "植物田间技术（下）",
+      "term": 6,
+      "terms": [
+        "3春"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": "植物模块",
+      "credits": 1.5,
+      "source_ref": null
+    },
+    {
+      "id": "C020",
+      "code": null,
+      "name": "畜禽发育生物学",
+      "term": 5,
+      "terms": [
+        "3秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": "动物模块",
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C021",
+      "code": null,
+      "name": "动物生产学",
+      "term": 5,
+      "terms": [
+        "3秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": "动物模块",
+      "credits": 4.0,
+      "source_ref": null
+    },
+    {
+      "id": "C022",
+      "code": null,
+      "name": "全球气候变化及应对",
+      "term": 5,
+      "terms": [
+        "3秋"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C023",
+      "code": null,
+      "name": "民法学概论",
+      "term": 5,
+      "terms": [
+        "3秋",
+        "2春"
+      ],
+      "category": "required",
+      "group": "大类平台课程II",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C024",
+      "code": null,
+      "name": "电工电子技术基础实验",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 1.0,
+      "source_ref": null
+    },
+    {
+      "id": "C025",
+      "code": null,
+      "name": "工程力学A（上）",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C026",
+      "code": null,
+      "name": "工程力学A（下）",
+      "term": 4,
+      "terms": [
+        "2春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 3.5,
+      "source_ref": null
+    },
+    {
+      "id": "C027",
+      "code": null,
+      "name": "基础力学实验",
+      "term": 4,
+      "terms": [
+        "2春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 0.5,
+      "source_ref": null
+    },
+    {
+      "id": "C028",
+      "code": null,
+      "name": "材料与制造技术及实践",
+      "term": 4,
+      "terms": [
+        "2春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 6.0,
+      "source_ref": null
+    },
+    {
+      "id": "C029",
+      "code": null,
+      "name": "控制工程基础",
+      "term": 4,
+      "terms": [
+        "2春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C030",
+      "code": null,
+      "name": "液压与气压传动",
+      "term": 4,
+      "terms": [
+        "2春",
+        "3秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C031",
+      "code": null,
+      "name": "机械设计基础",
+      "term": 5,
+      "terms": [
+        "3秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": "工程模块",
+      "credits": 4.0,
+      "source_ref": null
+    },
+    {
+      "id": "C032",
+      "code": null,
+      "name": "机械设计基础课程设计",
+      "term": 6,
+      "terms": [
+        "3春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": "工程模块",
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C033",
+      "code": null,
+      "name": "智能传感与信号处理",
+      "term": 6,
+      "terms": [
+        "3春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": "工程模块",
+      "credits": 2.5,
+      "source_ref": null
+    },
+    {
+      "id": "C034",
+      "code": null,
+      "name": "热工基础",
+      "term": 5,
+      "terms": [
+        "3秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": "工程模块",
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C035",
+      "code": null,
+      "name": "机器人导论",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "专业必修",
+      "track": null,
+      "credits": 1.0,
+      "source_ref": null
+    },
+    {
+      "id": "C036",
+      "code": null,
+      "name": "图像处理与机器视觉",
+      "term": 6,
+      "terms": [
+        "3春"
+      ],
+      "category": "required",
+      "group": "专业必修",
+      "track": "智能模块",
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C037",
+      "code": null,
+      "name": "嵌入式控制系统原理及应用",
+      "term": 6,
+      "terms": [
+        "3春"
+      ],
+      "category": "required",
+      "group": "专业必修",
+      "track": "智能模块",
+      "credits": 2.5,
+      "source_ref": null
+    },
+    {
+      "id": "C038",
+      "code": null,
+      "name": "农业信息感知与智能作业装备",
+      "term": 6,
+      "terms": [
+        "3春"
+      ],
+      "category": "required",
+      "group": "专业必修",
+      "track": "智能模块",
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C039",
+      "code": null,
+      "name": "智能装备设计制造实践",
+      "term": 7,
+      "terms": [
+        "4秋"
+      ],
+      "category": "required",
+      "group": "专业必修",
+      "track": null,
+      "credits": 8.0,
+      "source_ref": null
+    },
+    {
+      "id": "C040",
+      "code": null,
+      "name": "智能装备毕业设计",
+      "term": 8,
+      "terms": [
+        "4春"
+      ],
+      "category": "required",
+      "group": "专业必修",
+      "track": null,
+      "credits": 5.0,
+      "source_ref": null
+    }
+  ],
+  "groups": [
+    {
+      "name": "思政类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 18.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "通识类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 8.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "外语类",
+      "module": "通识教育",
+      "rule": "all_of",
+      "credits_required": 8.0,
+      "computed_credits": {
+        "植物模块": 8.0,
+        "动物模块": 8.0
+      },
+      "course_count": 4,
+      "practice_credits": null
+    },
+    {
+      "name": "计算机类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 0.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "体育类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 4.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "美育类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 2.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "劳动教育类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 1.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": 1.0
+    },
+    {
+      "name": "军事理论与军训",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 1.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "创新创业类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 2.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": 2.0
+    },
+    {
+      "name": "大类平台课程I",
+      "module": "大类平台教育",
+      "rule": "all_of",
+      "credits_required": 10.0,
+      "computed_credits": {
+        "植物模块": 10.0,
+        "动物模块": 10.0
+      },
+      "course_count": 4,
+      "practice_credits": null
+    },
+    {
+      "name": "大类平台课程II",
+      "module": "大类平台教育",
+      "rule": "credits",
+      "credits_required": {
+        "植物模块": 35.0,
+        "动物模块": 38.0
+      },
+      "computed_credits": {
+        "植物模块": 35.0,
+        "动物模块": 38.0
+      },
+      "course_count": 15,
+      "practice_credits": null
+    },
+    {
+      "name": "学院平台课",
+      "module": "大类平台教育",
+      "rule": "credits",
+      "credits_required": 30.5,
+      "computed_credits": {
+        "植物模块": 30.5,
+        "动物模块": 30.5
+      },
+      "course_count": 11,
+      "practice_credits": null
+    },
+    {
+      "name": "专业必修",
+      "module": "专业教育",
+      "rule": "credits",
+      "credits_required": 21.5,
+      "computed_credits": {
+        "植物模块": 21.5,
+        "动物模块": 21.5
+      },
+      "course_count": 6,
+      "practice_credits": null
+    },
+    {
+      "name": "专业选修",
+      "module": "专业教育",
+      "rule": "unknown",
+      "credits_required": {
+        "植物模块": 9.0,
+        "动物模块": 6.0
+      },
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "生命科学大类平台实践课",
+      "module": "实践教育环节",
+      "rule": "unknown",
+      "credits_required": {
+        "植物模块": 3.0
+      },
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "专业选修实践课",
+      "module": "实践教育环节",
+      "rule": "unknown",
+      "credits_required": 3.0,
+      "computed_credits": {
+        "植物模块": 0,
+        "动物模块": 0
+      },
+      "course_count": 0,
+      "practice_credits": null
+    }
+  ],
+  "credit_summary": {
+    "parsed_credits": 111.0,
+    "elective_pool_credits": 0,
+    "practice_credits": 0,
+    "graduation_target_credits": 150.0
+  },
+  "warnings": [
+    {
+      "code": "CONFLICTING_DECLARATIONS",
+      "message": "实践学分两处声明不一致：“实践教育环节” 38.75 vs“毕业学分要求” 38.25"
+    },
+    {
+      "code": "PRACTICE_TOTAL",
+      "message": "实践学分：已归集 35.75（课程 20 门 + 课组 3 项），声明 38.75，差额 3.00 来自未列明条目的“专业选修实践课”✓"
+    }
+  ],
+  "completeness": {
+    "level": "full",
+    "score": 100.0,
+    "checks": [
+      {
+        "key": "courses_found",
+        "ok": true,
+        "detail": "识别到 40 门课程"
+      },
+      {
+        "key": "fields_complete",
+        "ok": true,
+        "detail": "课程名 40/40；学分 40/40；修读学期 40/40；课程编号 4/40"
+      },
+      {
+        "key": "credit_target_present",
+        "ok": true,
+        "detail": "毕业总学分 150.0"
+      },
+      {
+        "key": "credit_reconciled",
+        "ok": true,
+        "detail": "[植物模块] 模块合计 150.00 = 声明总学分 150.00"
+      },
+      {
+        "key": "groups_complete",
+        "ok": true,
+        "detail": "识别到 16 个课程组"
+      }
+    ],
+    "coverage": {
+      "name": {
+        "hit": 40,
+        "total": 40
+      },
+      "credits": {
+        "hit": 40,
+        "total": 40
+      },
+      "terms": {
+        "hit": 40,
+        "total": 40
+      },
+      "code": {
+        "hit": 4,
+        "total": 40
+      }
+    },
+    "alerts": [],
+    "recommended_upload": {
+      "format": "docx",
+      "label": "Word 原件（.docx）",
+      "reason": "有文字层和真实表格，字段最全，推荐首选",
+      "rank": [
+        {
+          "format": "docx",
+          "label": "Word 原件（.docx）",
+          "note": "有文字层和真实表格，字段最全，推荐首选"
+        },
+        {
+          "format": "word97",
+          "label": "Word 原件（.doc）",
+          "note": "同上；旧格式，另存为 .docx 后更稳"
+        },
+        {
+          "format": "pdf_text",
+          "label": "含文字层的 PDF",
+          "note": "有字，但表格靠坐标还原，合并单元格/跨页可能丢行"
+        },
+        {
+          "format": "pdf_vector",
+          "label": "转曲或扫描 PDF",
+          "note": "没有文字层，必须先转图识别，准确率最低"
+        },
+        {
+          "format": "image",
+          "label": "图片（截图/照片）",
+          "note": "没有版面结构，只能靠识别，不建议"
+        }
+      ]
+    }
+  }
+}

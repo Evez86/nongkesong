@@ -1,0 +1,224 @@
+{
+  "plan_id": "plan_demo_001",
+  "source": {
+    "mode": "parsed",
+    "file_name": "示例培养方案.docx",
+    "format": "docx",
+    "text_layer": true,
+    "ocr_used": false,
+    "files": null
+  },
+  "program_name": "数据科学试验班",
+  "cohort": null,
+  "parse_status": "partial",
+  "courses": [
+    {
+      "id": "C001",
+      "code": "10100001",
+      "name": "Academic English（1）",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "外语类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C002",
+      "code": "10100002",
+      "name": "Academic English（2）",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "外语类",
+      "track": null,
+      "credits": 2.0,
+      "source_ref": null
+    },
+    {
+      "id": "C003",
+      "code": "20200001",
+      "name": "高等数学",
+      "term": 1,
+      "terms": [
+        "1秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 5.0,
+      "source_ref": null
+    },
+    {
+      "id": "C004",
+      "code": "20200002",
+      "name": "线性代数",
+      "term": 2,
+      "terms": [
+        "1春"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    },
+    {
+      "id": "C005",
+      "code": "20200003",
+      "name": "概率论",
+      "term": 3,
+      "terms": [
+        "2秋"
+      ],
+      "category": "required",
+      "group": "学院平台课",
+      "track": null,
+      "credits": 3.0,
+      "source_ref": null
+    }
+  ],
+  "groups": [
+    {
+      "name": "思政类",
+      "module": "通识教育",
+      "rule": "unknown",
+      "credits_required": 8.0,
+      "computed_credits": 0,
+      "course_count": 0,
+      "practice_credits": null
+    },
+    {
+      "name": "外语类",
+      "module": "通识教育",
+      "rule": "all_of",
+      "credits_required": 8.0,
+      "computed_credits": 4.0,
+      "course_count": 2,
+      "practice_credits": null
+    },
+    {
+      "name": "学院平台课",
+      "module": "大类平台教育",
+      "rule": "all_of",
+      "credits_required": 12.0,
+      "computed_credits": 11.0,
+      "course_count": 3,
+      "practice_credits": null
+    }
+  ],
+  "credit_summary": {
+    "parsed_credits": 15.0,
+    "elective_pool_credits": 0,
+    "practice_credits": 0,
+    "graduation_target_credits": 120.0
+  },
+  "warnings": [
+    {
+      "code": "GROUP_SUM",
+      "message": "外语类：课程合计 4.00，声明 8.00"
+    },
+    {
+      "code": "GROUP_SUM",
+      "message": "学院平台课：课程合计 11.00，声明 12.00"
+    },
+    {
+      "code": "TOTAL_SUM",
+      "message": "模块合计 28.00 ≠ 声明总学分 120.00"
+    }
+  ],
+  "completeness": {
+    "level": "partial",
+    "score": 80.0,
+    "checks": [
+      {
+        "key": "courses_found",
+        "ok": true,
+        "detail": "识别到 5 门课程"
+      },
+      {
+        "key": "fields_complete",
+        "ok": true,
+        "detail": "课程名 5/5；学分 5/5；修读学期 5/5；课程编号 5/5"
+      },
+      {
+        "key": "credit_target_present",
+        "ok": true,
+        "detail": "毕业总学分 120.0"
+      },
+      {
+        "key": "credit_reconciled",
+        "ok": false,
+        "detail": "模块合计 28.00 ≠ 声明总学分 120.00"
+      },
+      {
+        "key": "groups_complete",
+        "ok": true,
+        "detail": "识别到 3 个课程组"
+      }
+    ],
+    "coverage": {
+      "name": {
+        "hit": 5,
+        "total": 5
+      },
+      "credits": {
+        "hit": 5,
+        "total": 5
+      },
+      "terms": {
+        "hit": 5,
+        "total": 5
+      },
+      "code": {
+        "hit": 5,
+        "total": 5
+      }
+    },
+    "alerts": [
+      {
+        "code": "CREDIT_NOT_RECONCILED",
+        "severity": "high",
+        "message": "学分无法与文档声明值核平，说明有课程或课程组未被完整识别。",
+        "user_action": "请上传同一份方案的 Word 原件（.docx）复核；当前结果请勿直接用于判断毕业进度。"
+      }
+    ],
+    "recommended_upload": {
+      "format": "docx",
+      "label": "Word 原件（.docx）",
+      "reason": "有文字层和真实表格，字段最全，推荐首选",
+      "rank": [
+        {
+          "format": "docx",
+          "label": "Word 原件（.docx）",
+          "note": "有文字层和真实表格，字段最全，推荐首选"
+        },
+        {
+          "format": "word97",
+          "label": "Word 原件（.doc）",
+          "note": "同上；旧格式，另存为 .docx 后更稳"
+        },
+        {
+          "format": "pdf_text",
+          "label": "含文字层的 PDF",
+          "note": "有字，但表格靠坐标还原，合并单元格/跨页可能丢行"
+        },
+        {
+          "format": "pdf_vector",
+          "label": "转曲或扫描 PDF",
+          "note": "没有文字层，必须先转图识别，准确率最低"
+        },
+        {
+          "format": "image",
+          "label": "图片（截图/照片）",
+          "note": "没有版面结构，只能靠识别，不建议"
+        }
+      ]
+    }
+  }
+}

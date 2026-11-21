@@ -1,0 +1,2010 @@
+{
+  "schema_version": "0.1",
+  "meta": {
+    "major_name": "工科试验班（智能装备）",
+    "total_credits": 150.0,
+    "general_credits": 44.0,
+    "practice_credits_declared": 38.25,
+    "duration_years": 4,
+    "degree": "工学学士"
+  },
+  "modules": [
+    {
+      "id": "M1",
+      "name": "通识教育",
+      "credits_required": 44.0,
+      "groups": [
+        {
+          "id": "M1.G1",
+          "name": "思政类",
+          "credits_required": 18.0,
+          "subgroups": [
+            {
+              "name": "思想政治理论必修课",
+              "credits_required": 16.5,
+              "courses": []
+            },
+            {
+              "name": "马克思主义理论选修课",
+              "credits_required": 0.0,
+              "courses": []
+            },
+            {
+              "name": "思想政治教育社会实践课",
+              "credits_required": 1.5,
+              "courses": [],
+              "practice_credits": 1.5
+            }
+          ],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G2",
+          "name": "通识类",
+          "credits_required": 8.0,
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G3",
+          "name": "外语类",
+          "credits_required": 8.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "C001",
+                  "code": "12314001",
+                  "name": "Academic Writing（1）",
+                  "unit": "外教",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C002",
+                  "code": "12314003",
+                  "name": "Listening and Presentation（1）",
+                  "unit": "外教",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C003",
+                  "code": "12314002",
+                  "name": "Academic Writing（2）",
+                  "unit": "外教",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "1春"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C004",
+                  "code": "12314004",
+                  "name": "Listening and Presentation（2）",
+                  "unit": "外教",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "1春"
+                  ],
+                  "track": null
+                }
+              ]
+            }
+          ],
+          "computed_credits": {
+            "植物模块": 8.0,
+            "动物模块": 8.0
+          }
+        },
+        {
+          "id": "M1.G4",
+          "name": "计算机类",
+          "credits_required": 0.0,
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G5",
+          "name": "体育类",
+          "credits_required": 4.0,
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G6",
+          "name": "美育类",
+          "credits_required": 2.0,
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G7",
+          "name": "劳动教育类",
+          "credits_required": 1.0,
+          "subgroups": [],
+          "practice_credits": 1.0,
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G8",
+          "name": "军事理论与军训",
+          "credits_required": 1.0,
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M1.G9",
+          "name": "创新创业类",
+          "credits_required": 2.0,
+          "subgroups": [],
+          "practice_credits": 2.0,
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        }
+      ],
+      "computed_credits": {
+        "植物模块": 44.0,
+        "动物模块": 44.0
+      }
+    },
+    {
+      "id": "M2",
+      "name": "大类平台教育",
+      "credits_required": {
+        "植物模块": 75.5,
+        "动物模块": 78.5
+      },
+      "groups": [
+        {
+          "id": "M2.G1",
+          "name": "大类平台课程I",
+          "credits_required": 10.0,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "C005",
+                  "code": null,
+                  "name": "画法几何与工程制图",
+                  "unit": "信电学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 32.0
+                  },
+                  "hours_raw": "32+32",
+                  "credits": 3.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 1.0,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "32"
+                },
+                {
+                  "id": "C006",
+                  "code": null,
+                  "name": "程序设计A",
+                  "unit": "信电学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 0.0,
+                    "practice": 64.0
+                  },
+                  "hours_raw": "0+64",
+                  "credits": 2.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 2.0,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "64"
+                },
+                {
+                  "id": "C007",
+                  "code": null,
+                  "name": "工程思维",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "1春"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C008",
+                  "code": null,
+                  "name": "电工电子技术基础",
+                  "unit": "信电学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 48.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "48",
+                  "credits": 3.0,
+                  "terms": [
+                    "2秋"
+                  ],
+                  "track": null
+                }
+              ]
+            }
+          ],
+          "computed_credits": {
+            "植物模块": 10.0,
+            "动物模块": 10.0
+          }
+        },
+        {
+          "id": "M2.G2",
+          "name": "大类平台课程II",
+          "credits_required": {
+            "植物模块": 35.0,
+            "动物模块": 38.0
+          },
+          "subgroups": [
+            {
+              "name": "理学大类平台课",
+              "credits_required": 28.0,
+              "courses": [
+                {
+                  "id": "C009",
+                  "code": null,
+                  "name": "一元微积分",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 80.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "80",
+                  "credits": 5.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C010",
+                  "code": null,
+                  "name": "多元微积分",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 80.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "80",
+                  "credits": 5.0,
+                  "terms": [
+                    "1春"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C011",
+                  "code": null,
+                  "name": "线性代数",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 48.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "48",
+                  "credits": 3.0,
+                  "terms": [
+                    "1春"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C012",
+                  "code": null,
+                  "name": "概率论与数理统计",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 48.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "48",
+                  "credits": 3.0,
+                  "terms": [
+                    "2秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C013",
+                  "code": null,
+                  "name": "大学物理B（上）",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 64.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "64",
+                  "credits": 4.0,
+                  "terms": [
+                    "1春"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C014",
+                  "code": null,
+                  "name": "大学物理B（下）",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 56.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "56",
+                  "credits": 3.5,
+                  "terms": [
+                    "2秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C015",
+                  "code": null,
+                  "name": "大学物理实验B",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 48.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "48",
+                  "credits": 1.5,
+                  "terms": [
+                    "2秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 1.5,
+                  "practice_match": "exact"
+                },
+                {
+                  "id": "C016",
+                  "code": null,
+                  "name": "基础化学",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C017",
+                  "code": null,
+                  "name": "基础化学实验",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 1.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 1.0,
+                  "practice_match": "exact"
+                }
+              ]
+            },
+            {
+              "name": "生命科学大类平台课",
+              "credits_required": {
+                "植物模块": 3.0,
+                "动物模块": 6.0
+              },
+              "courses": [
+                {
+                  "id": "C018",
+                  "code": null,
+                  "name": "植物田间技术（上）",
+                  "unit": "农学院",
+                  "type": "module_group",
+                  "type_raw": "植物模块组",
+                  "hours": {
+                    "theory": 0.0,
+                    "practice": 48.0
+                  },
+                  "hours_raw": "0+48",
+                  "credits": 1.5,
+                  "terms": [
+                    "3秋"
+                  ],
+                  "track": "植物模块",
+                  "practice_credits": 1.5,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "1.5"
+                },
+                {
+                  "id": "C019",
+                  "code": null,
+                  "name": "植物田间技术（下）",
+                  "unit": "农学院",
+                  "type": "module_group",
+                  "type_raw": "植物模块组",
+                  "hours": {
+                    "theory": 0.0,
+                    "practice": 48.0
+                  },
+                  "hours_raw": "0+48",
+                  "credits": 1.5,
+                  "terms": [
+                    "3春"
+                  ],
+                  "track": "植物模块",
+                  "practice_credits": 1.5,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "1.5"
+                },
+                {
+                  "id": "C020",
+                  "code": null,
+                  "name": "畜禽发育生物学",
+                  "unit": "动科学院",
+                  "type": "module_group",
+                  "type_raw": "动物模块组",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "3秋"
+                  ],
+                  "track": "动物模块"
+                },
+                {
+                  "id": "C021",
+                  "code": null,
+                  "name": "动物生产学",
+                  "unit": "动科学院",
+                  "type": "module_group",
+                  "type_raw": "动物模块组",
+                  "hours": {
+                    "theory": 64.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "64",
+                  "credits": 4.0,
+                  "terms": [
+                    "3秋"
+                  ],
+                  "track": "动物模块"
+                }
+              ]
+            },
+            {
+              "name": "生态环境大类平台课",
+              "credits_required": 2.0,
+              "courses": [
+                {
+                  "id": "C022",
+                  "code": null,
+                  "name": "全球气候变化及应对",
+                  "unit": "资环学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "3秋"
+                  ],
+                  "track": null
+                }
+              ]
+            },
+            {
+              "name": "人文社科大类平台课",
+              "credits_required": 2.0,
+              "courses": [
+                {
+                  "id": "C023",
+                  "code": null,
+                  "name": "民法学概论",
+                  "unit": "人发学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 2.0,
+                  "terms": [
+                    "3秋",
+                    "2春"
+                  ],
+                  "track": null
+                }
+              ]
+            }
+          ],
+          "notes": [
+            "注：“植物模块组”为植物生长发育和生产过程的课程组，“动物模块组”为动物生长发育和生产过程的课程组。学生可以选其中一个模块作为生命大类课程。"
+          ],
+          "computed_credits": {
+            "植物模块": 35.0,
+            "动物模块": 38.0
+          }
+        },
+        {
+          "id": "M2.G3",
+          "name": "学院平台课",
+          "credits_required": 30.5,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "C024",
+                  "code": null,
+                  "name": "电工电子技术基础实验",
+                  "unit": "信电学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "32",
+                  "credits": 1.0,
+                  "terms": [
+                    "2秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 1.0,
+                  "practice_match": "exact"
+                },
+                {
+                  "id": "C025",
+                  "code": null,
+                  "name": "工程力学A（上）",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 48.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "48",
+                  "credits": 3.0,
+                  "terms": [
+                    "2秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C026",
+                  "code": null,
+                  "name": "工程力学A（下）",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 56.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "56",
+                  "credits": 3.5,
+                  "terms": [
+                    "2春"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C027",
+                  "code": null,
+                  "name": "基础力学实验",
+                  "unit": "理学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 16.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "16",
+                  "credits": 0.5,
+                  "terms": [
+                    "2春"
+                  ],
+                  "track": null,
+                  "practice_credits": 0.5,
+                  "practice_match": "exact"
+                },
+                {
+                  "id": "C028",
+                  "code": null,
+                  "name": "材料与制造技术及实践",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 128.0
+                  },
+                  "hours_raw": "32+128",
+                  "credits": 6.0,
+                  "terms": [
+                    "2春"
+                  ],
+                  "track": null,
+                  "practice_credits": 4.0,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "128"
+                },
+                {
+                  "id": "C029",
+                  "code": null,
+                  "name": "控制工程基础",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 44.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "44+8",
+                  "credits": 3.0,
+                  "terms": [
+                    "2春"
+                  ],
+                  "track": null,
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                },
+                {
+                  "id": "C030",
+                  "code": null,
+                  "name": "液压与气压传动",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 44.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "44+8",
+                  "credits": 3.0,
+                  "terms": [
+                    "2春",
+                    "3秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                },
+                {
+                  "id": "C031",
+                  "code": null,
+                  "name": "机械设计基础",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "工程模块",
+                  "hours": {
+                    "theory": 60.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "60+8",
+                  "credits": 4.0,
+                  "terms": [
+                    "3秋"
+                  ],
+                  "track": "工程模块",
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                },
+                {
+                  "id": "C032",
+                  "code": null,
+                  "name": "机械设计基础课程设计",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "工程模块",
+                  "hours": {
+                    "weeks": 2.0,
+                    "theory": null,
+                    "practice": null
+                  },
+                  "hours_raw": "2周",
+                  "credits": 2.0,
+                  "terms": [
+                    "3春"
+                  ],
+                  "track": "工程模块",
+                  "practice_credits": 2.0,
+                  "practice_match": "exact"
+                },
+                {
+                  "id": "C033",
+                  "code": null,
+                  "name": "智能传感与信号处理",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "工程模块",
+                  "hours": {
+                    "theory": 36.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "36+8",
+                  "credits": 2.5,
+                  "terms": [
+                    "3春"
+                  ],
+                  "track": "工程模块",
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                },
+                {
+                  "id": "C034",
+                  "code": null,
+                  "name": "热工基础",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "工程模块",
+                  "hours": {
+                    "theory": 28.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "28+8",
+                  "credits": 2.0,
+                  "terms": [
+                    "3秋"
+                  ],
+                  "track": "工程模块",
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                }
+              ]
+            }
+          ],
+          "notes": [
+            "注： “工程模块”为必修，可以选修表中四个课程，也可以选修可分流的工科专业的四个相关课程，学分按学校规定置换；"
+          ],
+          "computed_credits": {
+            "植物模块": 30.5,
+            "动物模块": 30.5
+          }
+        }
+      ],
+      "computed_credits": {
+        "植物模块": 75.5,
+        "动物模块": 78.5
+      }
+    },
+    {
+      "id": "M3",
+      "name": "专业教育",
+      "credits_required": {
+        "植物模块": 30.5,
+        "动物模块": 27.5
+      },
+      "groups": [
+        {
+          "id": "M3.G1",
+          "name": "专业必修",
+          "credits_required": 21.5,
+          "subgroups": [
+            {
+              "name": "默认组",
+              "credits_required": null,
+              "courses": [
+                {
+                  "id": "C035",
+                  "code": null,
+                  "name": "机器人导论",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "theory": 1.0,
+                    "practice": 0.0
+                  },
+                  "hours_raw": "1",
+                  "credits": 1.0,
+                  "terms": [
+                    "1秋"
+                  ],
+                  "track": null
+                },
+                {
+                  "id": "C036",
+                  "code": null,
+                  "name": "图像处理与机器视觉",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "智能模块组",
+                  "hours": {
+                    "theory": 28.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "28+8",
+                  "credits": 2.0,
+                  "terms": [
+                    "3春"
+                  ],
+                  "track": "智能模块",
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                },
+                {
+                  "id": "C037",
+                  "code": null,
+                  "name": "嵌入式控制系统原理及应用",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "智能模块组",
+                  "hours": {
+                    "theory": 32.0,
+                    "practice": 16.0
+                  },
+                  "hours_raw": "32+16",
+                  "credits": 2.5,
+                  "terms": [
+                    "3春"
+                  ],
+                  "track": "智能模块",
+                  "practice_credits": 0.5,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "16"
+                },
+                {
+                  "id": "C038",
+                  "code": null,
+                  "name": "农业信息感知与智能作业装备",
+                  "unit": "工学院",
+                  "type": "module_group",
+                  "type_raw": "智能模块组",
+                  "hours": {
+                    "theory": 44.0,
+                    "practice": 8.0
+                  },
+                  "hours_raw": "44+8",
+                  "credits": 3.0,
+                  "terms": [
+                    "3春"
+                  ],
+                  "track": "智能模块",
+                  "practice_credits": 0.25,
+                  "practice_match": "exact",
+                  "practice_hours_raw": "8"
+                },
+                {
+                  "id": "C039",
+                  "code": null,
+                  "name": "智能装备设计制造实践",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "weeks": 8.0,
+                    "theory": null,
+                    "practice": null
+                  },
+                  "hours_raw": "8周",
+                  "credits": 8.0,
+                  "terms": [
+                    "4秋"
+                  ],
+                  "track": null,
+                  "practice_credits": 8.0,
+                  "practice_match": "fuzzy"
+                },
+                {
+                  "id": "C040",
+                  "code": null,
+                  "name": "智能装备毕业设计",
+                  "unit": "工学院",
+                  "type": "required",
+                  "type_raw": "必修",
+                  "hours": {
+                    "weeks": 12.0,
+                    "theory": null,
+                    "practice": null
+                  },
+                  "hours_raw": "12周",
+                  "credits": 5.0,
+                  "terms": [
+                    "4春"
+                  ],
+                  "track": null,
+                  "practice_credits": 5.0,
+                  "practice_match": "exact"
+                }
+              ]
+            }
+          ],
+          "notes": [
+            "1、“智能模块组”为必修，可以选表中三个课程，也可以选修可分流的工科专业的三个相关课程，学分按学校规定置换；",
+            "2、智能装备设计制造实践课程：根据选择的研究方向，在导师组和企业导师指导下，在实习基地企业进行2个月的实习，并完成来自企业需求的智能装备设计制造项目。"
+          ],
+          "computed_credits": {
+            "植物模块": 21.5,
+            "动物模块": 21.5
+          }
+        },
+        {
+          "id": "M3.G2",
+          "name": "专业选修",
+          "credits_required": {
+            "植物模块": 9.0,
+            "动物模块": 6.0
+          },
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        }
+      ],
+      "computed_credits": {
+        "植物模块": 30.5,
+        "动物模块": 27.5
+      }
+    },
+    {
+      "id": "M4",
+      "name": "实践教育环节",
+      "credits_required": 38.75,
+      "groups": [
+        {
+          "id": "M4.G1",
+          "name": "生命科学大类平台实践课",
+          "credits_required": {
+            "植物模块": 3.0
+          },
+          "subgroups": [],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        },
+        {
+          "id": "M4.G2",
+          "name": "专业选修实践课",
+          "credits_required": 3.0,
+          "subgroups": [],
+          "notes": [
+            "注：选修范围包括工学院、信息与电子学院、水利与土木学院、动科学院、农学院、生物学院、植保学院和园艺学院的选修实践课。"
+          ],
+          "computed_credits": {
+            "植物模块": 0,
+            "动物模块": 0
+          }
+        }
+      ],
+      "role": "practice_breakdown",
+      "computed_credits": {
+        "植物模块": 6.0,
+        "动物模块": 3.0
+      }
+    }
+  ],
+  "courses": [
+    {
+      "id": "C001",
+      "code": "12314001",
+      "name": "Academic Writing（1）",
+      "unit": "外教",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "module": "通识教育",
+      "group": "外语类"
+    },
+    {
+      "id": "C002",
+      "code": "12314003",
+      "name": "Listening and Presentation（1）",
+      "unit": "外教",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "module": "通识教育",
+      "group": "外语类"
+    },
+    {
+      "id": "C003",
+      "code": "12314002",
+      "name": "Academic Writing（2）",
+      "unit": "外教",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "1春"
+      ],
+      "track": null,
+      "module": "通识教育",
+      "group": "外语类"
+    },
+    {
+      "id": "C004",
+      "code": "12314004",
+      "name": "Listening and Presentation（2）",
+      "unit": "外教",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "1春"
+      ],
+      "track": null,
+      "module": "通识教育",
+      "group": "外语类"
+    },
+    {
+      "id": "C005",
+      "code": null,
+      "name": "画法几何与工程制图",
+      "unit": "信电学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 32.0
+      },
+      "hours_raw": "32+32",
+      "credits": 3.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "practice_credits": 1.0,
+      "practice_match": "exact",
+      "practice_hours_raw": "32",
+      "module": "大类平台教育",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "C006",
+      "code": null,
+      "name": "程序设计A",
+      "unit": "信电学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 0.0,
+        "practice": 64.0
+      },
+      "hours_raw": "0+64",
+      "credits": 2.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "practice_credits": 2.0,
+      "practice_match": "exact",
+      "practice_hours_raw": "64",
+      "module": "大类平台教育",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "C007",
+      "code": null,
+      "name": "工程思维",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "1春"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "C008",
+      "code": null,
+      "name": "电工电子技术基础",
+      "unit": "信电学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 48.0,
+        "practice": 0.0
+      },
+      "hours_raw": "48",
+      "credits": 3.0,
+      "terms": [
+        "2秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程I"
+    },
+    {
+      "id": "C009",
+      "code": null,
+      "name": "一元微积分",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 80.0,
+        "practice": 0.0
+      },
+      "hours_raw": "80",
+      "credits": 5.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C010",
+      "code": null,
+      "name": "多元微积分",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 80.0,
+        "practice": 0.0
+      },
+      "hours_raw": "80",
+      "credits": 5.0,
+      "terms": [
+        "1春"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C011",
+      "code": null,
+      "name": "线性代数",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 48.0,
+        "practice": 0.0
+      },
+      "hours_raw": "48",
+      "credits": 3.0,
+      "terms": [
+        "1春"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C012",
+      "code": null,
+      "name": "概率论与数理统计",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 48.0,
+        "practice": 0.0
+      },
+      "hours_raw": "48",
+      "credits": 3.0,
+      "terms": [
+        "2秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C013",
+      "code": null,
+      "name": "大学物理B（上）",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 64.0,
+        "practice": 0.0
+      },
+      "hours_raw": "64",
+      "credits": 4.0,
+      "terms": [
+        "1春"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C014",
+      "code": null,
+      "name": "大学物理B（下）",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 56.0,
+        "practice": 0.0
+      },
+      "hours_raw": "56",
+      "credits": 3.5,
+      "terms": [
+        "2秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C015",
+      "code": null,
+      "name": "大学物理实验B",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 48.0,
+        "practice": 0.0
+      },
+      "hours_raw": "48",
+      "credits": 1.5,
+      "terms": [
+        "2秋"
+      ],
+      "track": null,
+      "practice_credits": 1.5,
+      "practice_match": "exact",
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C016",
+      "code": null,
+      "name": "基础化学",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C017",
+      "code": null,
+      "name": "基础化学实验",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 1.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "practice_credits": 1.0,
+      "practice_match": "exact",
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "理学大类平台课"
+    },
+    {
+      "id": "C018",
+      "code": null,
+      "name": "植物田间技术（上）",
+      "unit": "农学院",
+      "type": "module_group",
+      "type_raw": "植物模块组",
+      "hours": {
+        "theory": 0.0,
+        "practice": 48.0
+      },
+      "hours_raw": "0+48",
+      "credits": 1.5,
+      "terms": [
+        "3秋"
+      ],
+      "track": "植物模块",
+      "practice_credits": 1.5,
+      "practice_match": "exact",
+      "practice_hours_raw": "1.5",
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "生命科学大类平台课"
+    },
+    {
+      "id": "C019",
+      "code": null,
+      "name": "植物田间技术（下）",
+      "unit": "农学院",
+      "type": "module_group",
+      "type_raw": "植物模块组",
+      "hours": {
+        "theory": 0.0,
+        "practice": 48.0
+      },
+      "hours_raw": "0+48",
+      "credits": 1.5,
+      "terms": [
+        "3春"
+      ],
+      "track": "植物模块",
+      "practice_credits": 1.5,
+      "practice_match": "exact",
+      "practice_hours_raw": "1.5",
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "生命科学大类平台课"
+    },
+    {
+      "id": "C020",
+      "code": null,
+      "name": "畜禽发育生物学",
+      "unit": "动科学院",
+      "type": "module_group",
+      "type_raw": "动物模块组",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "3秋"
+      ],
+      "track": "动物模块",
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "生命科学大类平台课"
+    },
+    {
+      "id": "C021",
+      "code": null,
+      "name": "动物生产学",
+      "unit": "动科学院",
+      "type": "module_group",
+      "type_raw": "动物模块组",
+      "hours": {
+        "theory": 64.0,
+        "practice": 0.0
+      },
+      "hours_raw": "64",
+      "credits": 4.0,
+      "terms": [
+        "3秋"
+      ],
+      "track": "动物模块",
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "生命科学大类平台课"
+    },
+    {
+      "id": "C022",
+      "code": null,
+      "name": "全球气候变化及应对",
+      "unit": "资环学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "3秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "生态环境大类平台课"
+    },
+    {
+      "id": "C023",
+      "code": null,
+      "name": "民法学概论",
+      "unit": "人发学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 2.0,
+      "terms": [
+        "3秋",
+        "2春"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "大类平台课程II",
+      "subgroup": "人文社科大类平台课"
+    },
+    {
+      "id": "C024",
+      "code": null,
+      "name": "电工电子技术基础实验",
+      "unit": "信电学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 0.0
+      },
+      "hours_raw": "32",
+      "credits": 1.0,
+      "terms": [
+        "2秋"
+      ],
+      "track": null,
+      "practice_credits": 1.0,
+      "practice_match": "exact",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C025",
+      "code": null,
+      "name": "工程力学A（上）",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 48.0,
+        "practice": 0.0
+      },
+      "hours_raw": "48",
+      "credits": 3.0,
+      "terms": [
+        "2秋"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C026",
+      "code": null,
+      "name": "工程力学A（下）",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 56.0,
+        "practice": 0.0
+      },
+      "hours_raw": "56",
+      "credits": 3.5,
+      "terms": [
+        "2春"
+      ],
+      "track": null,
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C027",
+      "code": null,
+      "name": "基础力学实验",
+      "unit": "理学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 16.0,
+        "practice": 0.0
+      },
+      "hours_raw": "16",
+      "credits": 0.5,
+      "terms": [
+        "2春"
+      ],
+      "track": null,
+      "practice_credits": 0.5,
+      "practice_match": "exact",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C028",
+      "code": null,
+      "name": "材料与制造技术及实践",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 32.0,
+        "practice": 128.0
+      },
+      "hours_raw": "32+128",
+      "credits": 6.0,
+      "terms": [
+        "2春"
+      ],
+      "track": null,
+      "practice_credits": 4.0,
+      "practice_match": "exact",
+      "practice_hours_raw": "128",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C029",
+      "code": null,
+      "name": "控制工程基础",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 44.0,
+        "practice": 8.0
+      },
+      "hours_raw": "44+8",
+      "credits": 3.0,
+      "terms": [
+        "2春"
+      ],
+      "track": null,
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C030",
+      "code": null,
+      "name": "液压与气压传动",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 44.0,
+        "practice": 8.0
+      },
+      "hours_raw": "44+8",
+      "credits": 3.0,
+      "terms": [
+        "2春",
+        "3秋"
+      ],
+      "track": null,
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C031",
+      "code": null,
+      "name": "机械设计基础",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "工程模块",
+      "hours": {
+        "theory": 60.0,
+        "practice": 8.0
+      },
+      "hours_raw": "60+8",
+      "credits": 4.0,
+      "terms": [
+        "3秋"
+      ],
+      "track": "工程模块",
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C032",
+      "code": null,
+      "name": "机械设计基础课程设计",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "工程模块",
+      "hours": {
+        "weeks": 2.0,
+        "theory": null,
+        "practice": null
+      },
+      "hours_raw": "2周",
+      "credits": 2.0,
+      "terms": [
+        "3春"
+      ],
+      "track": "工程模块",
+      "practice_credits": 2.0,
+      "practice_match": "exact",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C033",
+      "code": null,
+      "name": "智能传感与信号处理",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "工程模块",
+      "hours": {
+        "theory": 36.0,
+        "practice": 8.0
+      },
+      "hours_raw": "36+8",
+      "credits": 2.5,
+      "terms": [
+        "3春"
+      ],
+      "track": "工程模块",
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C034",
+      "code": null,
+      "name": "热工基础",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "工程模块",
+      "hours": {
+        "theory": 28.0,
+        "practice": 8.0
+      },
+      "hours_raw": "28+8",
+      "credits": 2.0,
+      "terms": [
+        "3秋"
+      ],
+      "track": "工程模块",
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "大类平台教育",
+      "group": "学院平台课"
+    },
+    {
+      "id": "C035",
+      "code": null,
+      "name": "机器人导论",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "theory": 1.0,
+        "practice": 0.0
+      },
+      "hours_raw": "1",
+      "credits": 1.0,
+      "terms": [
+        "1秋"
+      ],
+      "track": null,
+      "module": "专业教育",
+      "group": "专业必修"
+    },
+    {
+      "id": "C036",
+      "code": null,
+      "name": "图像处理与机器视觉",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "智能模块组",
+      "hours": {
+        "theory": 28.0,
+        "practice": 8.0
+      },
+      "hours_raw": "28+8",
+      "credits": 2.0,
+      "terms": [
+        "3春"
+      ],
+      "track": "智能模块",
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "专业教育",
+      "group": "专业必修"
+    },
+    {
+      "id": "C037",
+      "code": null,
+      "name": "嵌入式控制系统原理及应用",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "智能模块组",
+      "hours": {
+        "theory": 32.0,
+        "practice": 16.0
+      },
+      "hours_raw": "32+16",
+      "credits": 2.5,
+      "terms": [
+        "3春"
+      ],
+      "track": "智能模块",
+      "practice_credits": 0.5,
+      "practice_match": "exact",
+      "practice_hours_raw": "16",
+      "module": "专业教育",
+      "group": "专业必修"
+    },
+    {
+      "id": "C038",
+      "code": null,
+      "name": "农业信息感知与智能作业装备",
+      "unit": "工学院",
+      "type": "module_group",
+      "type_raw": "智能模块组",
+      "hours": {
+        "theory": 44.0,
+        "practice": 8.0
+      },
+      "hours_raw": "44+8",
+      "credits": 3.0,
+      "terms": [
+        "3春"
+      ],
+      "track": "智能模块",
+      "practice_credits": 0.25,
+      "practice_match": "exact",
+      "practice_hours_raw": "8",
+      "module": "专业教育",
+      "group": "专业必修"
+    },
+    {
+      "id": "C039",
+      "code": null,
+      "name": "智能装备设计制造实践",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "weeks": 8.0,
+        "theory": null,
+        "practice": null
+      },
+      "hours_raw": "8周",
+      "credits": 8.0,
+      "terms": [
+        "4秋"
+      ],
+      "track": null,
+      "practice_credits": 8.0,
+      "practice_match": "fuzzy",
+      "module": "专业教育",
+      "group": "专业必修"
+    },
+    {
+      "id": "C040",
+      "code": null,
+      "name": "智能装备毕业设计",
+      "unit": "工学院",
+      "type": "required",
+      "type_raw": "必修",
+      "hours": {
+        "weeks": 12.0,
+        "theory": null,
+        "practice": null
+      },
+      "hours_raw": "12周",
+      "credits": 5.0,
+      "terms": [
+        "4春"
+      ],
+      "track": null,
+      "practice_credits": 5.0,
+      "practice_match": "exact",
+      "module": "专业教育",
+      "group": "专业必修"
+    }
+  ],
+  "issues": [
+    {
+      "level": "info",
+      "code": "TOTAL_SUM",
+      "message": "[植物模块] 模块合计 150.00 = 声明总学分 150.00"
+    },
+    {
+      "level": "info",
+      "code": "TOTAL_SUM",
+      "message": "[动物模块] 模块合计 150.00 = 声明总学分 150.00"
+    },
+    {
+      "level": "warning",
+      "code": "CONFLICTING_DECLARATIONS",
+      "message": "实践学分两处声明不一致：“实践教育环节” 38.75 vs“毕业学分要求” 38.25"
+    },
+    {
+      "level": "warning",
+      "code": "PRACTICE_TOTAL",
+      "message": "实践学分：已归集 35.75（课程 20 门 + 课组 3 项），声明 38.75，差额 3.00 来自未列明条目的“专业选修实践课”✓"
+    },
+    {
+      "level": "info",
+      "code": "TRACK_VARIANTS",
+      "message": "大类平台课程II 学分为分模块设定：{\"植物模块\": 35.0, \"动物模块\": 38.0}"
+    },
+    {
+      "level": "info",
+      "code": "TRACK_VARIANTS",
+      "message": "专业选修 学分为分模块设定：{\"植物模块\": 9.0, \"动物模块\": 6.0}"
+    },
+    {
+      "level": "info",
+      "code": "TRACK_VARIANTS",
+      "message": "生命科学大类平台实践课 学分为分模块设定：{\"植物模块\": 3.0}"
+    }
+  ]
+}

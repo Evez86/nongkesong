@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>培养方案核对 · 松果来信</title>
+<style>
+  :root{
+    --paper:#f6f1e7; --card:#fffdf8; --line:#e6d9c2; --ink:#3b2a1d;
+    --muted:#8a7457; --accent:#8a5a2b; --gold:#d9a441;
+    --ok:#2f6b3a; --warn:#a8701a; --bad:#a33a2c;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:14px/1.65 -apple-system,"Segoe UI",system-ui,"PingFang SC","Microsoft YaHei",sans-serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:34px 20px 80px}
+  h1{font-size:21px;margin:0 0 2px}
+  .sub{color:var(--muted);font-size:12.5px;margin-bottom:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+        padding:22px 24px;margin-bottom:18px;box-shadow:0 4px 14px rgba(80,50,20,.05)}
+  .drop{border:2px dashed var(--line);border-radius:12px;padding:30px;text-align:center;
+        color:var(--muted);transition:.18s;cursor:pointer}
+  .drop.hover{border-color:var(--gold);background:#fdf6e6;color:var(--accent)}
+  .drop b{color:var(--accent)}
+  input[type=file]{display:none}
+  button{background:var(--accent);color:#fff;border:0;border-radius:9px;
+         padding:9px 18px;font-size:14px;cursor:pointer}
+  button:disabled{opacity:.45;cursor:default}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .hint{color:var(--muted);font-size:12.5px}
+  .badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:600}
+  .b-full{background:#e5f1e6;color:var(--ok)}
+  .b-partial{background:#fbf0d9;color:var(--warn)}
+  .b-failed{background:#f7e3df;color:var(--bad)}
+  .bar{height:8px;background:#efe6d3;border-radius:99px;overflow:hidden;margin:10px 0 4px}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,#c9a45f,#8a5a2b)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:7px 9px;text-align:left;border-bottom:1px solid #f0e8d8;vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12px;position:sticky;top:0;background:var(--card)}
+  tr:hover td{background:#fdfaf2}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .alert{border-left:3px solid var(--gold);background:#fdf6e6;padding:11px 14px;
+         border-radius:7px;margin:9px 0;font-size:13px}
+  .alert.high{border-color:var(--bad);background:#fbeceb}
+  .alert b{display:inline-block;margin-right:6px}
+  .alert .act{color:var(--accent);margin-top:3px}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:6px}
+  .kv div span{display:block;color:var(--muted);font-size:12px}
+  .kv div b{font-size:16px;font-variant-numeric:tabular-nums}
+  .err{background:#fbeceb;border-left:3px solid var(--bad);padding:14px;border-radius:8px;
+       white-space:pre-wrap;font-family:Consolas,monospace;font-size:12.5px}
+  .tag{font-size:11px;padding:1px 7px;border-radius:6px;background:#f1e8d6;color:var(--accent)}
+  .scroll{max-height:520px;overflow:auto;margin-top:8px}
+  .muted{color:var(--muted)}
+  .status{display:flex;gap:10px;align-items:flex-start;margin-top:14px;padding:12px 14px;
+          border-radius:10px;border:1px solid var(--line);background:#fdfaf2}
+  .status .dot{width:10px;height:10px;border-radius:50%;background:#c9bda6;
+               margin-top:6px;flex:0 0 auto}
+  .status .st{flex:1;min-width:0}
+  .status .st b{display:block;font-size:13.5px}
+  .s-idle{background:#fdfaf2}
+  .s-working{background:#fdf6e6;border-color:#ecd9a8}
+  .s-working .dot{background:var(--gold);animation:pulse 1s infinite}
+  .s-ok{background:#eef6ee;border-color:#c4dfc7}
+  .s-ok .dot{background:var(--ok)}
+  .s-err{background:#fbeceb;border-color:#e5bdb7}
+  .s-err .dot{background:var(--bad)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .prog{height:5px;border-radius:99px;background:#efe6d3;overflow:hidden;margin-top:7px}
+  .prog>i{display:block;height:100%;width:0;background:var(--gold);transition:width .15s}
+  .mono{font-family:Consolas,monospace;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>培养方案核对</h1>
+  <div class="sub">
+    内部工具，用于上传文件并检查解析结果。<b>不是产品页面</b> —— 产品界面是 React 手帐（:5173）。
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between;margin-bottom:12px">
+      <b>上传</b>
+      <span id="conn" class="tag muted">正在检测 API…</span>
+    </div>
+    <div class="drop" id="drop">
+      <div>把文件拖到这里，或 <b>点击选择</b>（可多选）</div>
+      <div class="hint" style="margin-top:6px">
+        推荐 Word 原件（.docx / .doc）；PDF 需含文字层；扫描件会被明确拒绝并给出建议<br>
+        同一份方案被拆成多个文件时，一起选会合并成一份（自动去重）
+      </div>
+    </div>
+    <input type="file" id="file" multiple>
+
+    <div id="status" class="status s-idle">
+      <span class="dot"></span>
+      <div class="st">
+        <b id="st-title">尚未上传</b>
+        <div id="st-detail" class="hint">选择文件后会自动开始解析</div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:10px">
+      <button id="retry" disabled>重新解析</button>
+      <span class="hint" id="fname"></span>
+    </div>
+  </div>
+
+  <div id="out"></div>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s == null ? '' : s)
+  .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const fmt = (n) => (n == null ? '—' : (Math.round(n*100)/100).toString());
+
+let picked = [];
+let timed = null;
+const drop = $('#drop'), input = $('#file'), retry = $('#retry'),
+      fname = $('#fname'), statusEl = $('#status'), connEl = $('#conn');
+
+/* ---------------- 连接检测 ---------------- */
+(async function ping() {
+  try {
+    const r = await fetch('/healthz', { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    connEl.textContent = '● API 已连接';
+    connEl.className = 'tag';
+    connEl.style.color = '#2f6b3a';
+    connEl.style.background = '#e5f1e6';
+  } catch (e) {
+    connEl.textContent = '● API 未连接';
+    connEl.className = 'tag';
+    connEl.style.color = '#a33a2c';
+    connEl.style.background = '#f7e3df';
+    setStatus('err', '打不开这个页面就说明服务没起', '请先用 start_api.bat 启动，并确认地址是 http://127.0.0.1:8000/ui');
+  }
+})();
+
+/* ---------------- 拖拽 / 选择 ---------------- */
+drop.onclick = () => input.click();
+drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('hover'); };
+drop.ondragleave = () => drop.classList.remove('hover');
+drop.ondrop = (e) => {
+  e.preventDefault(); drop.classList.remove('hover');
+  const fs = Array.from(e.dataTransfer.files || []);
+  if (fs.length) start(fs);
+};
+input.onchange = () => {
+  const fs = Array.from(input.files || []);
+  if (fs.length) start(fs);
+};
+retry.onclick = () => { if (picked.length) upload(picked); };
+
+/* ---------------- 状态栏 ---------------- */
+function setStatus(kind, title, detail, extraHtml) {
+  statusEl.className = 'status s-' + kind;
+  $('#st-title').textContent = title;
+  $('#st-detail').innerHTML = esc(detail || '') + (extraHtml || '');
+}
+
+function setProgress(pct) {
+  const bar = statusEl.querySelector('.prog > i');
+  if (bar) bar.style.width = Math.max(0, Math.min(100, pct)) + '%';
+}
+
+function start(files) {
+  picked = Array.isArray(files) ? files : [files];
+  fname.innerHTML = picked.map((f) =>
+    '<div>' + esc(f.name) + ' · ' + (f.size / 1024).toFixed(0) + ' KB</div>').join('');
+  retry.disabled = false;
+  $('#out').innerHTML = '';
+  upload(picked);
+}
+
+/* ---------------- 上传 ---------------- */
+function upload(files) {
+  const fd = new FormData();
+  files.forEach((f) => fd.append('file', f));
+  const t0 = Date.now();
+  retry.disabled = true;
+
+  setStatus('working', '正在上传并解析…',
+    (files.length > 1 ? files.length + ' 个文件 · ' : '') + '0.0s',
+    '<div class="prog"><i></i></div>');
+  setProgress(0);
+
+  if (timed) clearInterval(timed);
+  const base = files.length > 1 ? files.length + ' 个文件 · ' : '';
+  timed = setInterval(() => {
+    const s = ((Date.now() - t0) / 1000).toFixed(1);
+    const d = $('#st-detail');
+    if (d) d.firstChild.textContent = base + s + 's';
+  }, 100);
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api/v1/training-plans');
+  xhr.responseType = 'text';
+
+  xhr.upload.onprogress = (e) => {
+    if (e.lengthComputable) setProgress(e.loaded / e.total * 60);
+  };
+
+  xhr.onload = () => {
+    clearInterval(timed); retry.disabled = false;
+    const secs = ((Date.now() - t0) / 1000).toFixed(1);
+    let data = {};
+    try { data = JSON.parse(xhr.responseText || '{}'); } catch (e) { /* 非 JSON */ }
+    if (xhr.status >= 200 && xhr.status < 300) {
+      setProgress(100);
+      const n = (data.courses || []).length;
+      const g = (data.groups || []).length;
+      const nf = ((data.source || {}).files || []).length;
+      const lvl = (data.completeness || {}).level || '';
+      const ok = lvl === 'full';
+      setStatus(ok ? 'ok' : 'idle',
+        (ok ? '✓ 解析成功（完整）' : '⚠ 解析完成，但有需要注意的项'),
+        'HTTP ' + xhr.status + ' · ' + secs + 's · ' + n + ' 门课程 / ' + g + ' 个课程组' +
+        (nf > 1 ? ' · 合并 ' + nf + ' 个文件' : '') +
+        ' · plan_id=' + (data.plan_id || '—'));
+      renderPlan(data);
+    } else {
+      setProgress(100);
+      const err = data.error || {};
+      setStatus('err', '✗ 上传失败（HTTP ' + xhr.status + '）',
+        err.code ? err.code + ' · ' + (err.message || '') : '服务返回了无法解析的内容',
+        ' · ' + secs + 's');
+      renderError(xhr.status, data);
+    }
+  };
+
+  xhr.onerror = () => {
+    clearInterval(timed); retry.disabled = false;
+    setStatus('err', '✗ 网络错误，连不上 API',
+      '请确认服务在运行，并且通过 http://127.0.0.1:8000/ui 打开本页（不要直接双击 html 文件）');
+    $('#out').innerHTML = '';
+  };
+
+  xhr.ontimeout = xhr.onerror;
+  xhr.timeout = 180000;
+  xhr.send(fd);
+}
+
+window.onerror = function (msg, src, line) {
+  setStatus('err', '✗ 页面脚本出错', msg + ' @line ' + line);
+};
+
+function renderError(status, data) {
+  const err = data.error || {};
+  let extra = '';
+  (err.details || []).forEach((d) => {
+    (d.alerts || []).forEach((a) => {
+      extra += '<div class="alert ' + esc(a.severity) + '"><b>' + esc(a.code) + '</b>' +
+               esc(a.message) + '<div class="act">→ ' + esc(a.user_action || '') + '</div></div>';
+    });
+    if (d.recommended_upload) {
+      extra += '<div class="alert"><b>建议上传</b>' + esc(d.recommended_upload.label) +
+               ' —— ' + esc(d.recommended_upload.reason || '') + '</div>';
+    }
+  });
+  $('#out').innerHTML =
+    '<div class="card"><div class="row" style="justify-content:space-between">' +
+    '<b>解析失败（HTTP ' + status + '）</b>' +
+    '<span class="badge b-failed">' + esc(err.code || 'ERROR') + '</span></div>' +
+    '<div class="err" style="margin-top:10px">' + esc(err.message || '') + '</div>' + extra + '</div>';
+}
+
+function renderPlan(d) {
+  const c = d.completeness || {};
+  const cls = c.level === 'full' ? 'b-full' : (c.level === 'failed' ? 'b-failed' : 'b-partial');
+  const cs = d.credit_summary || {};
+
+  let alerts = (c.alerts || []).map((a) =>
+    '<div class="alert ' + esc(a.severity) + '"><b>' + esc(a.code) + '</b>' + esc(a.message) +
+    (a.user_action ? '<div class="act">→ ' + esc(a.user_action) + '</div>' : '') + '</div>').join('');
+  (d.warnings || []).forEach((w) => {
+    if (w.code !== 'NO_TEXT_LAYER' && w.code !== 'OCR_USED')
+      alerts += '<div class="alert"><b>' + esc(w.code) + '</b>' + esc(w.message) + '</div>';
+  });
+
+  const checks = (c.checks || []).map((k) =>
+    '<tr><td>' + (k.ok ? '✓' : '✗') + '</td><td><code>' + esc(k.key) + '</code></td><td>' +
+    esc(k.detail) + '</td></tr>').join('');
+
+  const groups = (d.groups || []).map((g) => {
+    const req = typeof g.credits_required === 'object' && g.credits_required
+      ? Object.entries(g.credits_required).map(([k, v]) => k + ' ' + fmt(v)).join(' / ')
+      : fmt(g.credits_required);
+    return '<tr><td>' + esc(g.name) + '</td><td><span class="tag">' + esc(g.rule) + '</span></td>' +
+      '<td class="num">' + req + '</td><td class="num">' + fmt(g.computed_credits) + '</td>' +
+      '<td class="num">' + (g.course_count || 0) + '</td></tr>';
+  }).join('');
+
+  const byTerm = {};
+  (d.courses || []).forEach((x) => {
+    const k = x.term == null ? '未定' : x.term;
+    (byTerm[k] = byTerm[k] || []).push(x);
+  });
+  const order = Object.keys(byTerm).sort((a, b) => (a === '未定' ? 99 : a) - (b === '未定' ? 99 : b));
+  const courseRows = order.map((t) => {
+    return byTerm[t].map((x) =>
+      '<tr><td class="num">' + esc(t) + '</td><td>' + esc(x.name) + '</td>' +
+      '<td>' + esc(x.group || '') + '</td><td>' + esc(x.category) + '</td>' +
+      '<td class="num">' + fmt(x.credits) + '</td>' +
+      '<td>' + esc((x.terms || []).join(' / ')) + '</td></tr>').join('');
+  }).join('');
+
+  $('#out').innerHTML =
+    '<div class="card">' +
+      '<div class="row" style="justify-content:space-between">' +
+        '<b>' + esc(d.program_name || '（未识别专业名）') + '</b>' +
+        '<span class="badge ' + cls + '">' + esc(c.level || '') + ' · ' + fmt(c.score) + '%</span>' +
+      '</div>' +
+      '<div class="bar"><i style="width:' + (c.score || 0) + '%"></i></div>' +
+      '<div class="hint">' + esc((d.source || {}).format || '') +
+        '｜文字层 ' + ((d.source || {}).text_layer ? '有' : '无') +
+        '｜OCR ' + ((d.source || {}).ocr_used ? '是' : '否') +
+        '｜plan_id ' + esc(d.plan_id) + '</div>' +
+      '<div class="kv">' +
+        '<div><span>必修学分</span><b>' + fmt(cs.parsed_credits) + '</b></div>' +
+        '<div><span>选修池</span><b>' + fmt(cs.elective_pool_credits) + '</b></div>' +
+        '<div><span>毕业要求</span><b>' + fmt(cs.graduation_target_credits) + '</b></div>' +
+        '<div><span>课程 / 课程组</span><b>' + (d.courses || []).length + ' / ' + (d.groups || []).length + '</b></div>' +
+      '</div>' + alerts +
+    '</div>' +
+    (checks ? '<div class="card"><b>完整度检查</b><table style="margin-top:8px">' + checks + '</table></div>' : '') +
+    (groups ? '<div class="card"><b>课程组</b><div class="scroll"><table><thead><tr>' +
+      '<th>名称</th><th>规则</th><th class="num">要求学分</th><th class="num">实际合计</th><th class="num">门数</th>' +
+      '</tr></thead><tbody>' + groups + '</tbody></table></div></div>' : '') +
+    (courseRows ? '<div class="card"><b>课程（按学期）</b><div class="scroll"><table><thead><tr>' +
+      '<th class="num">学期</th><th>课程名</th><th>课程组</th><th>类别</th><th class="num">学分</th><th>原始学期</th>' +
+      '</tr></thead><tbody>' + courseRows + '</tbody></table></div></div>' : '');
+}
+</script>
+</body>
+</html>
