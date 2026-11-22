@@ -273,9 +273,16 @@ backend/
 | GET | `/` | 接口清单页（开发工具） |
 | GET | `/ui` | 内部核对页（开发工具，上线前删） |
 | GET | `/healthz` | 可用性 |
-| POST | `/api/v1/training-plans` | 上传解析，`file` 可重复 |
+| GET | `/api/v1/auth/login` | 发起登录（302 到学校统一认证） |
+| GET | `/api/v1/auth/callback` | 学校回跳，校验 ticket 后建会话 |
+| GET | `/api/v1/auth/session` | 当前会话 |
+| POST | `/api/v1/auth/logout` | 退出 |
+| GET | /api/v1/academic/profile | 学业数据 + 逐字段状态（需登录） |
+| POST | /api/v1/academic/import | 导入成绩单（CSV/JSON/文本）→ 已修课程 |
+| GET | `/api/v1/training-plans/match` | 专业 + 入学年级 → 方案版本 |
+| POST | `/api/v1/training-plans` | 上传解析，`file` 可重复，`cohort` 登记年级 |
 | GET | `/api/v1/training-plans/{plan_id}` | 读回上次结果 |
-| POST | `/api/v1/growth-plans` | 生成八学期路线（`mode=demo\|ai`） |
+| POST | `/api/v1/growth-plans` | 生成八学期路线（`mode=demo\|ai`，`use_session` 接学业数据） |
 | GET | `/api/v1/opportunities`、`/{id}` | 机会（当前为 fixture） |
 | GET | `/api/v1/resources`、`/{id}` | 资源（当前为 fixture） |
 
@@ -294,6 +301,7 @@ backend/
 | 422 | `MISSING_FILE` / `PARSING_FAILED` / `INVALID_MODE` | 参数或解析失败 |
 | 502 | `GROWTH_INVALID` | 路线未过结构校验 |
 | 503 | `AI_NOT_CONFIGURED` | AI 未配置 |
+| 401 | `AUTH_REQUIRED` / `AUTH_FAILED` | 未登录 / 票据校验失败 |
 
 ---
 
@@ -313,28 +321,43 @@ backend/
 
 ```bash
 python api/smoke_test.py http://127.0.0.1:8000   # 22 项接口测试
+python api/verify_auth.py http://127.0.0.1:8000  # 25 项登录/学业数据/导入验收
 python verify_formats.py                          # 6 种输入的格式矩阵
 python pipeline.py "样本.docx"                     # 端到端
 ```
 
-当前：**22/22 通过**。覆盖正常上传、多文件合并、读回、路线结构、404/422/503、无文字层降级。
+当前：**22/22 + 25/25 通过**。覆盖正常上传、多文件合并、读回、路线结构、404/422/503、无文字层降级、登录回跳、会话、学业数据字段状态、方案匹配、换学生/换已修课程、退出失效。
 
 ---
 
-## 12. 已知限制
+## 12. 统一认证与学业数据（§8.6）
+
+设计红线：**后端永不接收学生的学校密码**。流程只有一条：302 到学校登录页 → 学生在那里输学号密码 → 带 ticket 跳回 → 后端服务端校验 ticket → 建自己的会话。
+
+- `api/auth.py`：会话存储（`var/sessions.json`，8 小时 TTL）+ 两种 provider（`mock` / `cas`）
+- `api/academic.py`：学业数据 provider，**每个字段带 `available/unavailable` 状态**，取不到的进 `missing_fields`，前端据此显示「暂未同步」
+- `api/programs.py`：按「专业 + 入学年级」匹配方案版本，匹配不到就降级并报警（`PLAN_YEAR_MISMATCH`）
+
+真实的学校对接需要信息中心批准，**需要确认的六件事**见 `docs/SCHOOL_AUTH.md`；在那之前 `mock` 模式可完整演练产品流程，`file` 模式可用学校导出的 JSON 联调。
+
+---
+
+## 13. 已知限制
 
 | 项 | 现状 | 后面怎么办 |
 |---|---|---|
+| 学校统一认证 | mock 可完整演练；CAS 代码已就绪 | 等学校批 service 回调地址（见 `docs/SCHOOL_AUTH.md`） |
+| 真实教务数据 | 学生导入成绩单（默认）/ 学校导出 JSON | 学校开放接口后实现 `academic` 的 live provider |
 | 视觉/OCR | 无文字层文件需要人工识别后回灌（`--ocr-cache`） | 接视觉模型，输出同一份 CSV schema |
 | AI 路线 | `mode=ai` 返回 503 | 接模型 + 复用 `validate()` |
 | 机会/资源 | `api/fixtures.py` 的演示数据 | 资料同学给真实数据后替换 |
-| 存储 | `var/plans/*.json` 落盘 | 换数据库时只改 `handlers.py` 的存取层 |
-| 鉴权/限流/分页 | 未做 | 上线前 |
+| 存储 | `var/plans/*.json`、`var/sessions.json` 落盘 | 换数据库时只改 `handlers.py` 的存取层 |
+| 鉴权强度 | 会话 Cookie + 8 小时过期 | 上线前加 CSRF 校验、限流 |
 | 课程代码缺失 | 样本 40 门里只有 4 门有编号 | 用（名称+学分+学期）做指纹 |
 
 ---
 
-## 13. 给新人 / AI 的阅读顺序
+## 14. 给新人 / AI 的阅读顺序
 
 按这个顺序读，30 分钟能建立完整心智模型：
 
@@ -343,8 +366,9 @@ python pipeline.py "样本.docx"                     # 端到端
 3. `to_api_v1.py` 的 `convert()` —— 内部结构怎么变成接口
 4. `curriculum_parser.py` 的 `Parser.__init__` / `try_row` / `validate` —— 解析内核
 5. `api/handlers.py` —— 每个路由对应一个函数，一一对应
-6. `CONTRACT_EXT.md` —— 契约为什么扩展、扩展了什么
-7. `docs/BACKEND.md` —— 启动与联调细节
+6. `api/auth.py` + `api/academic.py` + `api/programs.py` —— 登录、学业数据、方案版本匹配
+7. `CONTRACT_EXT.md` —— 契约为什么扩展、扩展了什么（含 §8.6 认证）
+8. `docs/SCHOOL_AUTH.md` —— 学校对接需要确认什么、红线在哪
 
 **改代码前的三条纪律**（来自 `PROJECT_HANDOFF.md` §10）：
 
@@ -354,7 +378,7 @@ python pipeline.py "样本.docx"                     # 端到端
 
 ---
 
-## 14. 术语表
+## 15. 术语表
 
 | 词 | 含义 |
 |---|---|

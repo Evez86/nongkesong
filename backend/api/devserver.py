@@ -23,6 +23,7 @@ if HERE not in sys.path:
 
 import fixtures  # noqa: E402
 import handlers  # noqa: E402
+import auth  # noqa: E402
 
 handlers.bind_fixtures(fixtures.OPPORTUNITIES, fixtures.RESOURCES)
 
@@ -30,10 +31,16 @@ ALLOW_ORIGINS = {'http://localhost:5173', 'http://127.0.0.1:5173'}
 
 ENDPOINTS = [
     ('GET', '/healthz', '服务可用性', '/healthz'),
+    ('GET', '/api/v1/auth/login', '发起学校登录（mock 模式返回回调地址）', '/api/v1/auth/login'),
+    ('GET', '/api/v1/auth/session', '当前会话（未登录 authenticated=false）', '/api/v1/auth/session'),
+    ('GET', '/api/v1/academic/profile', '学业数据（需登录，未登录 401）', '/api/v1/academic/profile'),    ('GET', '/api/v1/training-plans/match', '按专业+年级匹配方案（?use_session=1）',
+     '/api/v1/training-plans/match?use_session=1'),
     ('GET', '/api/v1/opportunities', '机会列表，可选 ?category= &status=', '/api/v1/opportunities'),
     ('GET', '/api/v1/opportunities/{id}', '机会详情', '/api/v1/opportunities/opp_demo_001'),
     ('GET', '/api/v1/resources', '资源列表，可选 ?category=', '/api/v1/resources'),
     ('GET', '/api/v1/resources/{id}', '资源详情', '/api/v1/resources/res_demo_001'),
+    ('POST', '/api/v1/auth/logout', '退出登录', None),
+    ('POST', '/api/v1/academic/import', '导入成绩单（CSV/JSON/文本），需登录', None),
     ('POST', '/api/v1/training-plans', '上传培养方案（multipart，字段 file）', None),
     ('GET', '/api/v1/training-plans/{plan_id}', '读回上次解析结果（id 由上传返回）', None),
     ('POST', '/api/v1/growth-plans', '生成八学期成长路线（mode=demo|ai）', None),
@@ -132,16 +139,26 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
 
-    def _json(self, status, payload, request_id=None):
+    def _json(self, status, payload, request_id=None, headers=None):
         body = json.dumps(payload, ensure_ascii=False).encode('utf-8')
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(body)))
         if request_id:
             self.send_header('X-Request-Id', request_id)
+        for k, v in (headers or {}).items():
+            self.send_header(k, v)
         self._cors()
         self.end_headers()
         self.wfile.write(body)
+
+    def _sid(self):
+        raw = self.headers.get('Cookie') or ''
+        for part in raw.split(';'):
+            k, _, v = part.strip().partition('=')
+            if k == auth.SESSION_COOKIE:
+                return v
+        return None
 
     def _html(self, status, html):
         body = html.encode('utf-8')
@@ -185,6 +202,21 @@ class Handler(BaseHTTPRequestHandler):
                                         'endpoints': [e[0] + ' ' + e[1] for e in ENDPOINTS]}, rid)
             if p == '/healthz':
                 return self._dispatch(handlers.healthz(), rid)
+            if p == '/api/v1/auth/login':
+                return self._dispatch(handlers.auth_login((q.get('redirect') or [None])[0]), rid)
+            if p == '/api/v1/auth/callback':
+                code = (q.get('code') or q.get('ticket') or [''])[0]
+                return self._dispatch(handlers.auth_callback(code, (q.get('redirect') or [None])[0]), rid)
+            if p == '/api/v1/auth/session':
+                return self._dispatch(handlers.auth_session(self._sid()), rid)
+            if p == '/api/v1/academic/profile':
+                return self._dispatch(handlers.academic_profile(self._sid()), rid)
+            if p == '/api/v1/training-plans/match':
+                return self._dispatch(handlers.match_training_plan(
+                    (q.get('major') or [None])[0],
+                    (q.get('enroll_year') or [None])[0],
+                    self._sid(),
+                    (q.get('use_session') or ['0'])[0].lower() in ('1', 'true', 'yes')), rid)
             if p == '/api/v1/opportunities':
                 return self._dispatch(handlers.list_opportunities(
                     (q.get('category') or [None])[0], (q.get('status') or [None])[0]), rid)
@@ -215,7 +247,30 @@ class Handler(BaseHTTPRequestHandler):
                 if not items:
                     raise handlers.ApiError(422, 'MISSING_FILE', '请用表单字段 file 上传文件。')
                 return self._dispatch(handlers.create_training_plan_multi(
-                    items, fields.get('mode', 'parsed')), rid)
+                    items, fields.get('mode', 'parsed'), fields.get('cohort')), rid)
+            if p == '/api/v1/auth/logout':
+                return self._dispatch(handlers.auth_logout(self._sid()), rid)
+            if p == '/api/v1/academic/import':
+                ctype = self.headers.get('Content-Type', '')
+                if 'multipart/form-data' in ctype:
+                    fields, files = parse_multipart(self._body(), ctype)
+                    items = files.get('file') or []
+                    if not items:
+                        raise handlers.ApiError(422, 'MISSING_FILE',
+                                                '请用表单字段 file 上传成绩单，或直接发 JSON。')
+                    name, content = items[0]
+                    return self._dispatch(handlers.academic_import(
+                        self._sid(), raw=content, filename=name,
+                        merge=str(fields.get('merge', 'true')).lower() != 'false',
+                        plan_id=fields.get('plan_id')), rid)
+                try:
+                    payload = json.loads(self._body() or b'{}')
+                except json.JSONDecodeError:
+                    raise handlers.ApiError(422, 'INVALID_JSON', '请求体不是合法 JSON。')
+                return self._dispatch(handlers.academic_import(
+                    self._sid(), payload=payload,
+                    merge=bool(payload.get('merge', True)),
+                    plan_id=payload.get('plan_id')), rid)
             if p == '/api/v1/growth-plans':
                 try:
                     payload = json.loads(self._body() or b'{}')
@@ -224,14 +279,21 @@ class Handler(BaseHTTPRequestHandler):
                 return self._dispatch(handlers.create_growth_plan(
                     payload.get('plan_id'), payload.get('interests'),
                     payload.get('mode') or 'demo',
-                    payload.get('completed_course_ids')), rid)
+                    payload.get('completed_course_ids'),
+                    sid=self._sid(),
+                    use_session=bool(payload.get('use_session')),
+                    completed_courses=payload.get('completed_courses')), rid)
             raise handlers.ApiError(404, 'NOT_FOUND', '没有这个接口。')
         except handlers.ApiError as e:
             return self._json(e.status, e.body(rid), rid)
 
     def _dispatch(self, result, rid):
-        status, payload = result
-        self._json(status, payload, rid)
+        if len(result) == 3:
+            status, payload, headers = result
+        else:
+            status, payload = result
+            headers = None
+        self._json(status, payload, rid, headers)
 
 
 def main():

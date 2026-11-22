@@ -148,11 +148,101 @@ POST /api/v1/training-plans  →  200
 把每页图交给视觉模型/OCR，按 `columns` 输出 CSV，再用 `--ocr-cache` 回灌即可。
 本仓库已用人工识别的缓存跑通 8 份 PDF，即该 seam 的参考实现。
 
-## 7. 对原文档的修改建议
+## 7. 认证与学业数据（新增 §8.6）
+
+原文档 §8 只有业务接口，没有登录。这里补一节，编号接在 §8.5 之后。
+
+### 7.1 路由
+
+| 方法 | 路径 | 输入 | 结果 |
+|---|---|---|---|
+| GET | `/api/v1/auth/login` | 可选 `redirect` | 302 到学校登录页；mock 模式返回 `login_url` |
+| GET | `/api/v1/auth/callback` | 学校回跳的 `ticket`（CAS）或 `code` | 302 回前端 + `Set-Cookie: pine_session` |
+| GET | `/api/v1/auth/session` | Cookie | `{authenticated, student, source, expires_at}` |
+| POST | `/api/v1/auth/logout` | Cookie | 清会话 + 清 Cookie |
+| GET | `/api/v1/academic/profile` | Cookie | 学业数据 + 逐字段状态（未登录 401） |
+| POST | `/api/v1/academic/import` | 成绩单 CSV / JSON / 文本 | 解析成已修课程并与方案对账 |
+| GET | `/api/v1/training-plans/match` | `major`/`enroll_year` 或 `use_session=1` | 匹配到的 `plan_id` 与匹配等级 |
+
+### 7.2 学业数据（逐字段状态）
+
+```json
+{
+  "student": { "student_id": "2024A001", "name": "林小满" },
+  "profile": { "major": "工科试验班（智能装备）", "enroll_year": 2024, "current_term": 3 },
+  "timetable": [{ "course": "概率论与数理统计", "weekday": 1, "period": "1-2", "place": "三教 204" }],
+  "completed_courses": [{ "name": "一元微积分", "credits": 5, "term": 1, "score": 88 }],
+  "field_status": {
+    "major":            { "status": "available" },
+    "gpa":              { "status": "unavailable", "reason": "本轮不采集绩点，避免不必要地保存敏感成绩" }
+  },
+  "missing_fields": ["gpa", "class_name", "advisor"],
+  "source": "mock"
+}
+```
+
+**规则**：取不到的字段不是省略，而是 `unavailable` + `reason`，并汇总进 `missing_fields`。
+前端读 `missing_fields` 渲染「暂未同步」，不要靠判断空值。
+
+### 7.2.1 导入成绩单（方案 B）
+
+```http
+POST /api/v1/academic/import
+multipart/form-data：file=<成绩单.csv>
+或 application/json：{"completed_courses":[{"name":"一元微积分","credits":5}], "merge":true}
+```
+
+| 参数 | 说明 |
+|---|---|
+| `file` | CSV（带/不带表头）、纯文本（一行一门）、JSON 都认 |
+| `merge` | 默认 `true` 合并进已有记录；`false` 覆盖 |
+| `plan_id` | 可选；不传则按会话的「专业+年级」自动匹配 |
+
+返回 `matched[] / unmatched[] / credits_earned`。
+`unmatched` 不是错误而是提示：可能是方案版本不对或课程别名，前端应让用户确认；
+`matched[].fuzzy=true` 表示靠相似度（≥0.85）匹配，需高亮。
+
+数据来源标记 `self_reported`，**优先级高于学校接口与演示数据**。
+
+### 7.3 方案匹配
+
+```json
+{ "plan_id": "plan_20261122_b6a1a6", "match": "exact",
+  "plan": { "major": "工科试验班（智能装备）", "cohort": 2024, "course_count": 40 },
+  "warnings": [], "queried": { "major": "...", "enroll_year": 2024 } }
+```
+
+| `match` | 含义 | 前端动作 |
+|---|---|---|
+| `exact` | 专业 + 年级都对上 | 直接用 |
+| `same_major_nearest_year` | 同专业、用了最接近的年级 | 显示 `warnings`，「这版可能不是你这一届的」 |
+| `same_major_any_year` | 同专业但没登记年级 | 提示版本不确定 |
+| `none` | 没收录 | 引导上传培养方案（`available_majors` 列出已有专业） |
+
+方案上传时用表单字段 `cohort` 登记入学年份，匹配才有依据。
+
+### 7.4 路线接入学业数据
+
+`POST /api/v1/growth-plans` 新增：
+
+| 字段 | 说明 |
+|---|---|
+| `use_session` | `true` 时用当前会话的学业数据；未传 `plan_id` 则先按专业+年级匹配 |
+| `completed_courses` | 覆盖会话里的已修课程，用于「临时试试别的组合」 |
+
+行为变化（规则版）：
+- 已修课程从本学期待办中扣除（例：8 门 → 4 门）
+- 已修完的学期，目标改为「复盘 + 巩固」
+- 课程组缺口按「已修多少 / 还差多少」计算，而不是「方案排了多少」
+
+`summary` 新增 `based_on`（`academic` / `plan_only`）、`completed_count`、`unmatched_completed`。
+
+## 8. 对原文档的修改建议
 
 | 位置 | 改成 |
 |---|---|
 | §7.2 "从可选取文字的 PDF 样本开始" | "先做文字层探测；无文字层的样本也要覆盖，走识别分支并报警" |
 | §8.2 状态表 | 增加 `422 PARSING_FAILED`（0 门课）；`415` 仅用于扩展名不支持 |
-| §8.3 字段表 | 补 `terms` / `group` / `track` / `groups[]` / `completeness` |
-| §12 待确认 | "实际支持的文件类型" 已有答案：docx/doc/pdf/图片，优先级见第 5 节 |
+| §8.3 字段表 | 补 `terms` / `group` / `track` / `groups[]` / `completeness` / `cohort` |
+| §8 结尾 | 新增 §8.6 认证与学业数据（见本文第 7 节） |
+| §12 待确认 | "实际支持的文件类型" 已有答案：docx/doc/pdf/图片，优先级见第 5 节；"学校是否开放统一认证"见 `docs/SCHOOL_AUTH.md` |

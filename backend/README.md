@@ -13,8 +13,9 @@
 |---|---|---|
 | BE-01 | FastAPI 骨架、健康检查、统一错误结构 | ✅（另附零依赖 devserver） |
 | BE-02 | 培养方案解析：Word / PDF / 图片，多文件合并 | ✅ 两份真实样本验证 |
-| BE-03 | 成长路线（规则驱动 + 结构校验；AI 分支预留） | ✅ |
+| BE-03 | 成长路线（规则驱动 + 结构校验；AI 分支预留） | ✅ 已接学业数据 |
 | BE-04 | 机会 / 资源读取接口 | ✅ 接口就绪，数据待资料同学替换 |
+| §8.6 | 统一认证、会话、学业数据、方案版本匹配 | ✅ CAS 代码就绪，等学校开放 |
 
 ---
 
@@ -64,9 +65,16 @@ python pipeline.py "培养方案.docx"
 | 方法 | 路径 | 说明 |
 |---|---|---|
 | GET | `/` `/ui` `/healthz` | 清单页 / 核对页 / 可用性 |
-| POST | `/api/v1/training-plans` | 上传解析，`file` 可重复（多文件合并成一份） |
+| GET | `/api/v1/auth/login` | 发起学校登录（302） |
+| GET | `/api/v1/auth/callback` | 学校回跳，建会话 |
+| GET | `/api/v1/auth/session` | 当前会话 |
+| POST | `/api/v1/auth/logout` | 退出 |
+| GET | /api/v1/academic/profile | 学业数据 + 逐字段状态（需登录） |
+| POST | /api/v1/academic/import | 导入成绩单（CSV/JSON/文本）→ 已修课程 |
+| GET | `/api/v1/training-plans/match` | 专业 + 入学年级 → 方案版本 |
+| POST | `/api/v1/training-plans` | 上传解析，`file` 可重复，`cohort` 登记年级 |
 | GET | `/api/v1/training-plans/{plan_id}` | 读回上次结果 |
-| POST | `/api/v1/growth-plans` | 八学期路线（`mode=demo\|ai`） |
+| POST | `/api/v1/growth-plans` | 八学期路线（`mode=demo\|ai`，`use_session` 接学业数据） |
 | GET | `/api/v1/opportunities` `/{id}` | 机会（当前 fixture） |
 | GET | `/api/v1/resources` `/{id}` | 资源（当前 fixture） |
 
@@ -79,10 +87,11 @@ python pipeline.py "培养方案.docx"
 
 ```bash
 python api/smoke_test.py http://127.0.0.1:8000   # 22 项接口测试
+python api/verify_auth.py http://127.0.0.1:8000  # 25 项登录/学业数据/导入验收
 python verify_formats.py                          # 6 种输入的格式矩阵
 ```
 
-当前 **22/22 通过**。
+当前 **22/22 + 25/25 通过**。
 
 ---
 
@@ -92,7 +101,8 @@ python verify_formats.py                          # 6 种输入的格式矩阵
 |---|---|
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | **技术文档主入口**：架构、数据流、数据模型、关键设计决策、术语表、新人阅读顺序 |
 | [docs/BACKEND.md](docs/BACKEND.md) | 启动方式、接口细节、错误码、前端联调 |
-| [CONTRACT_EXT.md](CONTRACT_EXT.md) | 对 `PROJECT_HANDOFF.md` §8 契约的扩展说明（为什么加字段） |
+| [docs/SCHOOL_AUTH.md](docs/SCHOOL_AUTH.md) | **学业数据接入**：三级方案（手填 / 导入成绩单 / 授权同步），默认走导入 |
+| [CONTRACT_EXT.md](CONTRACT_EXT.md) | 对 `PROJECT_HANDOFF.md` §8 契约的扩展说明（含新增 §8.6 认证） |
 
 ---
 

@@ -11,13 +11,38 @@
 |---|---|
 | `GET /` 接口清单首页 | 已实现 |
 | `GET /healthz` | 已实现 |
-| `POST /api/v1/training-plans`（Word / PDF / 图片） | 已实现，含完整度报警 |
+| `POST /api/v1/training-plans`（Word / PDF / 图片，可多文件） | 已实现，含完整度报警 |
 | `GET /api/v1/training-plans/{plan_id}` | 已实现（结果落盘，重启可读） |
-| `POST /api/v1/growth-plans` | demo 模式已实现；`mode=ai` 返回 503 待接入 |
+| `GET /api/v1/training-plans/match` | 已实现（专业 + 入学年级） |
+| `POST /api/v1/growth-plans` | demo 已实现并可接学业数据；`mode=ai` 返回 503 |
+| `GET/POST /api/v1/auth/*` 登录、会话、退出 | 已实现（mock / CAS 两种模式） |
+| `GET /api/v1/academic/profile` 学业数据 | 已实现（逐字段状态，未登录 401） |
 | `GET /api/v1/opportunities`、`/{id}` | 已实现（fixture，`source: demo`） |
 | `GET /api/v1/resources`、`/{id}` | 已实现（fixture，`source: demo`） |
 
 未知路径返回 404 + `NOT_FOUND`，并提示去根路径看清单。
+
+### 认证与学业数据
+
+登录走学校统一认证，**后端不接收密码**：302 到学校登录页 → 带 ticket 跳回 → 服务端校验 → 建会话（HttpOnly Cookie，8 小时）。
+默认 `PINE_AUTH_MODE=mock`，可直接演练完整流程；学校审批下来后配 `cas` 三个地址即可，代码不改。
+需要跟学校确认的事见 [SCHOOL_AUTH.md](SCHOOL_AUTH.md)。
+
+学业数据每个字段都带 `available / unavailable + reason`，取不到的汇总在 `missing_fields`，前端据此显示「暂未同步」。
+
+**数据从哪来（默认方案 B）**：学生在教务系统导出成绩单 → 上传：
+
+```bash
+curl.exe -X POST http://127.0.0.1:8000/api/v1/academic/import ^
+  -b "pine_session=<会话>" -F "file=@成绩单.csv"
+```
+
+返回 `matched[] / unmatched[] / credits_earned`，`unmatched` 是需要学生确认的（方案版本不对或课程别名）。
+导入的数据标记 `self_reported`，优先级高于演示数据。示例文件：`out/fixtures/成绩单示例.csv`。
+
+```bash
+python api/verify_auth.py http://127.0.0.1:8000   # 25 项验收（含导入）
+```
 
 解析链路（`ingest.py` → `curriculum_parser.py`）**零第三方依赖**；`api/` 只是 HTTP 翻译层。
 

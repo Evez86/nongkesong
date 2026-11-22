@@ -21,6 +21,9 @@ if ROOT not in sys.path:
 import ingest  # noqa: E402
 import to_api_v1  # noqa: E402
 import growth  # noqa: E402
+import auth  # noqa: E402
+import academic  # noqa: E402
+import programs  # noqa: E402
 
 MAX_FILE_BYTES = 20 * 1024 * 1024       # §8.3 上限待定，先给 20MB
 ALLOWED_EXT = {'.docx', '.doc', '.pdf', '.png', '.jpg', '.jpeg', '.webp', '.bmp', '.tif', '.tiff'}
@@ -88,8 +91,9 @@ def create_training_plan(file_name, content, mode='parsed'):
     return create_training_plan_multi([(file_name, content)], mode)
 
 
-def create_training_plan_multi(items, mode='parsed'):
-    """items: [(filename, bytes)]。多个文件 = 同一份方案被拆开，合并成一个 plan。"""
+def create_training_plan_multi(items, mode='parsed', cohort=None):
+    """items: [(filename, bytes)]。多个文件 = 同一份方案被拆开，合并成一个 plan。
+    cohort: 入学年份（可选），用于「专业 + 入学年级」匹配版本。"""
     if not items:
         raise ApiError(400, 'EMPTY_FILE', '文件为空，请重新选择。')
     for name, content in items:
@@ -138,6 +142,11 @@ def create_training_plan_multi(items, mode='parsed'):
                        else '这些文件合起来没有解析出任何课程。',
                        details=[{'alerts': comp['alerts'],
                                  'recommended_upload': comp['recommended_upload']}])
+    if cohort not in (None, ''):
+        try:
+            api['cohort'] = int(cohort)
+        except (TypeError, ValueError):
+            api['cohort'] = str(cohort)
     save_plan(api)
     return 200, api
 
@@ -150,9 +159,22 @@ def get_training_plan(plan_id):
 
 
 # ------------------------------------------------------------------ 成长路线
-def create_growth_plan(plan_id, interests=None, mode='demo', completed_ids=None):
+def create_growth_plan(plan_id, interests=None, mode='demo', completed_ids=None,
+                       sid=None, use_session=False, completed_courses=None):
     if mode not in ('demo', 'ai'):
         raise ApiError(422, 'INVALID_MODE', 'mode 只允许 demo 或 ai。')
+
+    academic_profile = None
+    if use_session:
+        s = _require_session(sid)
+        academic_profile, _ = academic.fetch(s['student'])
+        completed_courses = completed_courses or academic_profile.get('completed_courses')
+        # 没指定方案时，按「专业 + 入学年级」自动匹配
+        if not plan_id:
+            res = programs.match(academic_profile['profile'].get('major'),
+                                 academic_profile['profile'].get('enroll_year'))
+            plan_id = res.get('plan_id')
+
     plan = load_plan(plan_id) if plan_id else None
     if plan_id and not plan:
         raise ApiError(404, 'PLAN_NOT_FOUND', '找不到对应培养方案，请重新上传。')
@@ -162,13 +184,130 @@ def create_growth_plan(plan_id, interests=None, mode='demo', completed_ids=None)
                        'AI 服务尚未配置，可先用演示模式（mode=demo）。')
 
     base = plan or {'plan_id': None, 'courses': [], 'groups': []}
-    out = growth.build(base, interests, completed_ids, mode)
+    out = growth.build(base, interests, completed_ids, mode, completed_courses)
     problems = growth.validate(out, plan)
     if problems:
         raise ApiError(502, 'GROWTH_INVALID',
                        '生成结果未通过结构校验，已拒绝返回。',
                        details=[{'problems': problems[:5]}])
+    if academic_profile is not None:
+        out['profile'] = academic_profile['profile']
+        out['missing_fields'] = academic_profile['missing_fields']
     return 200, out
+
+
+# ------------------------------------------------------------------ 认证 / 会话
+def auth_login(redirect=None):
+    url, external = auth.login_url(redirect)
+    return 302, {'login_url': url, 'external': external}, {'Location': url}
+
+
+def auth_callback(code, redirect=None):
+    try:
+        student, source = auth.exchange(code, auth.APP_BASE_URL + '/api/v1/auth/callback')
+    except ValueError as e:
+        raise ApiError(401, 'AUTH_FAILED', str(e))
+    except Exception:
+        raise ApiError(502, 'AUTH_UPSTREAM_ERROR', '暂时连不上学校统一认证，请稍后再试。')
+
+    if source == 'mock':
+        student['_mock_key'] = code.split(':', 1)[1] if ':' in code else 'demo_a'
+
+    sid = auth.store.create(student, source)
+    target = redirect or (auth.FRONTEND_URL + '/#/notebook')
+    cookie = '%s=%s; Path=/; HttpOnly; SameSite=Lax; Max-Age=%d' % (
+        auth.SESSION_COOKIE, sid, auth.SESSION_TTL)
+    return 302, {'ok': True, 'redirect': target, 'source': source}, {
+        'Location': target, 'Set-Cookie': cookie}
+
+
+def auth_session(sid):
+    s = auth.store.get(sid)
+    if not s:
+        return 200, {'authenticated': False, 'login_mode': auth.mode()}
+    stu = dict(s['student'])
+    stu.pop('_mock_key', None)
+    return 200, {'authenticated': True, 'student': stu, 'source': s['source'],
+                 'expires_at': s['expires_at'], 'login_mode': auth.mode()}
+
+
+def auth_logout(sid):
+    auth.store.delete(sid)
+    return 200, {'ok': True}, {
+        'Set-Cookie': '%s=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0' % auth.SESSION_COOKIE}
+
+
+def _require_session(sid):
+    s = auth.store.get(sid)
+    if not s:
+        raise ApiError(401, 'AUTH_REQUIRED', '需要先登录学校统一认证。')
+    return s
+
+
+# ------------------------------------------------------------------ 学业数据
+def academic_profile(sid):
+    s = _require_session(sid)
+    payload, missing = academic.fetch(s['student'])
+    payload['missing_fields'] = missing
+    return 200, payload
+
+
+def academic_import(sid, payload=None, filename='', raw=None, merge=True, plan_id=None):
+    """学生自己导入已修课程（成绩单 CSV / JSON / 粘贴文本）。
+    方案 B：不依赖学校审批，学生从教务系统导出后上传。"""
+    s = _require_session(sid)
+    sid_key = s['student']['student_id']
+
+    courses, kind = academic.parse_payload(
+        payload if payload is not None else raw, filename)
+    if not courses:
+        raise ApiError(422, 'IMPORT_EMPTY',
+                       '没有从文件里读到课程。支持 CSV（含“课程名称/学分”列）、JSON，或一行一门课的文本。')
+
+    saved = academic.save_imported(sid_key, courses, merge=merge)
+
+    # 与培养方案对账（有方案才有意义）
+    if not plan_id:
+        prof, _ = academic.fetch(s['student'])
+        res = programs.match(prof['profile'].get('major'), prof['profile'].get('enroll_year'))
+        plan_id = res.get('plan_id')
+    plan = load_plan(plan_id) if plan_id else None
+    matched, unmatched = academic.match_courses((plan or {}).get('courses') or [],
+                                                saved['completed_courses'])
+    earned = round(sum((m.get('credits') or 0) for m in matched), 2)
+
+    return 200, {
+        'ok': True,
+        'source': 'self_reported',
+        'format': kind,
+        'imported': len(courses),
+        'total_after_merge': len(saved['completed_courses']),
+        'merge': bool(merge),
+        'updated_at': saved['updated_at'],
+        'plan_id': plan_id,
+        'matched': matched,
+        'unmatched': unmatched,
+        'credits_earned': earned,
+        'summary': {
+            'matched_count': len(matched),
+            'unmatched_count': len(unmatched),
+            'fuzzy_matched': [m['name'] for m in matched if m.get('fuzzy')],
+        },
+    }
+
+
+# ------------------------------------------------------------------ 方案匹配
+def match_training_plan(major=None, enroll_year=None, sid=None, use_session=False):
+    if use_session:
+        s = _require_session(sid)
+        payload, _ = academic.fetch(s['student'])
+        major = major or payload['profile'].get('major')
+        enroll_year = enroll_year or payload['profile'].get('enroll_year')
+    if not major:
+        raise ApiError(422, 'MISSING_MAJOR', '缺少专业名，无法匹配培养方案。')
+    res = programs.match(major, enroll_year)
+    res['queried'] = {'major': major, 'enroll_year': enroll_year}
+    return 200, res
 
 
 # ------------------------------------------------------------------ 机会 / 资源

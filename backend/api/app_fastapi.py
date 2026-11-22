@@ -11,9 +11,9 @@ import json
 import os
 import sys
 
-from fastapi import FastAPI, File, Form, Request, UploadFile
+from fastapi import Cookie, FastAPI, File, Form, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -23,6 +23,7 @@ for p in (ROOT, HERE):
 
 import fixtures  # noqa: E402
 import handlers  # noqa: E402
+import auth  # noqa: E402
 
 handlers.bind_fixtures(fixtures.OPPORTUNITIES, fixtures.RESOURCES)
 
@@ -74,9 +75,70 @@ def healthz():
 
 
 @app.post('/api/v1/training-plans')
-async def create_training_plan(files: list[UploadFile] = File(...), mode: str = Form('parsed')):
+async def create_training_plan(files: list[UploadFile] = File(...), mode: str = Form('parsed'),
+                               cohort: str | None = Form(None)):
     items = [(f.filename, await f.read()) for f in files]
-    return handlers.create_training_plan_multi(items, mode)[1]
+    return handlers.create_training_plan_multi(items, mode, cohort)[1]
+
+
+# ---------------- 认证 / 会话（§8.6）----------------
+@app.get('/api/v1/auth/login')
+def auth_login(redirect: str | None = None):
+    status, body, headers = handlers.auth_login(redirect)
+    return RedirectResponse(headers['Location'], status_code=302)
+
+
+@app.get('/api/v1/auth/callback')
+def auth_callback(code: str | None = None, ticket: str | None = None,
+                  redirect: str | None = None):
+    status, body, headers = handlers.auth_callback(code or ticket or '', redirect)
+    resp = RedirectResponse(headers['Location'], status_code=302)
+    cookie = headers['Set-Cookie']
+    name, _, rest = cookie.partition('=')
+    value = rest.split(';', 1)[0]
+    resp.set_cookie(name, value, max_age=auth.SESSION_TTL, httponly=True, samesite='lax', path='/')
+    return resp
+
+
+@app.get('/api/v1/auth/session')
+def auth_session(pine_session: str | None = Cookie(None)):
+    return handlers.auth_session(pine_session)[1]
+
+
+@app.post('/api/v1/auth/logout')
+def auth_logout(pine_session: str | None = Cookie(None)):
+    resp = JSONResponse(handlers.auth_logout(pine_session)[1])
+    resp.delete_cookie('pine_session', path='/')
+    return resp
+
+
+@app.get('/api/v1/academic/profile')
+def academic_profile(pine_session: str | None = Cookie(None)):
+    return handlers.academic_profile(pine_session)[1]
+
+
+@app.post('/api/v1/academic/import')
+async def academic_import(request: Request, pine_session: str | None = Cookie(None)):
+    ctype = request.headers.get('content-type', '')
+    if 'multipart/form-data' in ctype:
+        form = await request.form()
+        upload = form.get('file')
+        content = await upload.read() if hasattr(upload, 'read') else b''
+        return handlers.academic_import(
+            pine_session, raw=content, filename=getattr(upload, 'filename', ''),
+            merge=str(form.get('merge', 'true')).lower() != 'false',
+            plan_id=form.get('plan_id'))[1]
+    payload = await request.json()
+    return handlers.academic_import(
+        pine_session, payload=payload, merge=bool(payload.get('merge', True)),
+        plan_id=payload.get('plan_id'))[1]
+
+
+@app.get('/api/v1/training-plans/match')
+def match_training_plan(major: str | None = None, enroll_year: str | None = None,
+                        use_session: bool = False,
+                        pine_session: str | None = Cookie(None)):
+    return handlers.match_training_plan(major, enroll_year, pine_session, use_session)[1]
 
 
 @app.get('/api/v1/training-plans/{plan_id}')
