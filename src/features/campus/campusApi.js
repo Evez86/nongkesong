@@ -21,7 +21,7 @@ const campusPath = `${apiBase ?? ''}/api/v1/campus`;
 export const hasCampusIntegration = apiBase !== null;
 export const campusLoginUrl = `${campusPath}/login`;
 
-async function request(path, { method = 'GET', signal } = {}) {
+async function request(path, { method = 'GET', body, signal } = {}) {
   const controller = new AbortController();
   const cancel = () => controller.abort();
   signal?.addEventListener('abort', cancel, { once: true });
@@ -30,13 +30,15 @@ async function request(path, { method = 'GET', signal } = {}) {
   try {
     const response = await fetch(`${campusPath}/${path}`, {
       method, signal: controller.signal, credentials: 'include', cache: 'no-store', redirect: 'error',
+      headers: body ? { 'Content-Type': 'application/json' } : undefined,
+      body: body ? JSON.stringify(body) : undefined,
     });
     if (!response.ok) {
       const error = new Error('校园服务暂时不可用，请稍后重试。');
       error.status = response.status;
       throw error;
     }
-    return method === 'GET' ? await response.json() : null;
+    return response.status === 204 || (method === 'POST' && !body) ? null : await response.json();
   } finally {
     clearTimeout(timeout);
     signal?.removeEventListener('abort', cancel);
@@ -48,11 +50,19 @@ export async function fetchCampusSession(signal) {
     const data = await request('session', { signal });
     if (data?.authenticated === false) return null;
     if (data?.authenticated !== true) throw new Error('校园登录状态暂时无法确认。');
-    return { name: typeof data.display_name === 'string' ? data.display_name.trim() : '' };
+    return { name: cleanText(data.display_name), demo: data.source === 'demo' };
   } catch (error) {
     if (error.status === 401) return null;
     throw error;
   }
+}
+
+function cleanText(value) {
+  return typeof value === 'string' ? value.trim() : '';
+}
+
+function readCredits(value) {
+  return Number.isFinite(value) && value >= 0 ? value : null;
 }
 
 function readTimetable(data) {
@@ -85,7 +95,27 @@ function readTimetable(data) {
 
 export async function fetchCampusAcademicData(signal) {
   const data = await request('academic-data', { signal });
-  return { plan: readCampusPlan(data?.training_plan), timetable: readTimetable(data?.timetable) };
+  const plan = readCampusPlan(data?.training_plan);
+  const cohort = data?.profile?.cohort;
+  const currentTerm = data?.profile?.current_term;
+  return {
+    source: data?.source === 'demo' ? 'demo' : 'campus',
+    profile: {
+      major: cleanText(data?.profile?.program_name) || plan?.program_name || '',
+      cohort: (Number.isInteger(cohort) ? String(cohort) : cleanText(cohort)) || plan?.cohort || '',
+      currentTerm: Number.isInteger(currentTerm) && currentTerm >= 1 && currentTerm <= 8 ? currentTerm : null,
+    },
+    credits: {
+      earned: readCredits(data?.credit_progress?.earned_credits),
+      inProgress: readCredits(data?.credit_progress?.in_progress_credits),
+    },
+    plan,
+    timetable: readTimetable(data?.timetable),
+  };
+}
+
+export function fetchCampusGrowthPlan(interests, signal) {
+  return request('growth-plans', { method: 'POST', body: { interests }, signal });
 }
 
 export async function endCampusSession(signal) {
