@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: pine-letters-demo
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: deploy/competition-demo
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    autoDeployTrigger: off
